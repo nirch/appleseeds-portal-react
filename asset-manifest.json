@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/appleseeds-react-portal/static/css/main.df74f9ee.chunk.css",
+    "main.js": "/appleseeds-react-portal/static/js/main.c4938877.chunk.js",
+    "main.js.map": "/appleseeds-react-portal/static/js/main.c4938877.chunk.js.map",
+    "runtime-main.js": "/appleseeds-react-portal/static/js/runtime-main.351adbda.js",
+    "runtime-main.js.map": "/appleseeds-react-portal/static/js/runtime-main.351adbda.js.map",
+    "static/css/2.47e06e2e.chunk.css": "/appleseeds-react-portal/static/css/2.47e06e2e.chunk.css",
+    "static/js/2.855f8d4f.chunk.js": "/appleseeds-react-portal/static/js/2.855f8d4f.chunk.js",
+    "static/js/2.855f8d4f.chunk.js.map": "/appleseeds-react-portal/static/js/2.855f8d4f.chunk.js.map",
+    "index.html": "/appleseeds-react-portal/index.html",
+    "precache-manifest.bac39df95fdf76267aab5ac910eda22d.js": "/appleseeds-react-portal/precache-manifest.bac39df95fdf76267aab5ac910eda22d.js",
+    "service-worker.js": "/appleseeds-react-portal/service-worker.js",
+    "static/css/2.47e06e2e.chunk.css.map": "/appleseeds-react-portal/static/css/2.47e06e2e.chunk.css.map",
+    "static/css/main.df74f9ee.chunk.css.map": "/appleseeds-react-portal/static/css/main.df74f9ee.chunk.css.map",
+    "static/js/2.855f8d4f.chunk.js.LICENSE.txt": "/appleseeds-react-portal/static/js/2.855f8d4f.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/appleseeds-react-portal/static/media/logo.25bf045c.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.351adbda.js",
+    "static/css/2.47e06e2e.chunk.css",
+    "static/js/2.855f8d4f.chunk.js",
+    "static/css/main.df74f9ee.chunk.css",
+    "static/js/main.c4938877.chunk.js"
+  ]
+}
