@@ -14,10 +14,16 @@ import './App.css';
 
 const App = () => {
 
-  const [activeUser, setActiveUser] = useState(null);
+  const [activeUser, setActiveUser] = useState(localStorage.activeUser ? JSON.parse(localStorage.activeUser) : null);
 
   const handleLogin = (activeUser) => {
     setActiveUser(activeUser);
+    localStorage.activeUser = JSON.stringify(activeUser);
+  }
+
+  const handleLogout = () => {
+    setActiveUser(null);
+    localStorage.removeItem("activeUser");
   }
 
   return (
@@ -27,22 +33,22 @@ const App = () => {
           <LoginPage handleLogin={handleLogin} />
         </Route>
         <Route exact path="/courses">
-          <CoursesPage />
+          <CoursesPage handleLogout={handleLogout}/>
         </Route>
         <Route path="/courses/:id">
-          <CourseDetailsPage />
+          <CourseDetailsPage handleLogout={handleLogout}/>
         </Route>
         <Route exact path="/users">
-          <UsersPage />
+          <UsersPage handleLogout={handleLogout}/>
         </Route>
         <Route path="/users/:id">
-          <UserDetailsPage />
+          <UserDetailsPage handleLogout={handleLogout}/>
         </Route>
         <Route path="/hours-report">
-          <HoursReportPage />
+          <HoursReportPage handleLogout={handleLogout}/>
         </Route>
         <Route path="/hours-approve">
-          <HoursApprovePage />
+          <HoursApprovePage handleLogout={handleLogout}/>
         </Route>
       </Switch>
     </ActiveUserContext.Provider>

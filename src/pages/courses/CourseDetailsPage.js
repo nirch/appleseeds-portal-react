@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './courses.css'
 import PortalNavbar from '../../components/navbar/PortalNavbar';
+import ActiveUserContext from '../../shared/activeUserContext'
+import { Redirect } from 'react-router-dom'
 
-const CourseDetailsPage = () => {
+const CourseDetailsPage = (props) => {
+    const { handleLogout } = props;
+    const activeUser = useContext(ActiveUserContext);
+    
+    if (!activeUser) {
+        return <Redirect to='/' />
+    }
+
     return (
         <div>
-            <PortalNavbar />
+            <PortalNavbar handleLogout={handleLogout}/>
             <h1>פרטי קורס</h1>
         </div>
     );

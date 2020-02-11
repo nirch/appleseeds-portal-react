@@ -2,7 +2,9 @@ import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap'
 import './navbar.css'
 
-const PortalNavbar = () => {
+const PortalNavbar = (props) => {
+    const { handleLogout } = props;
+
     return (
         <div>
             <Navbar bg="light" expand="lg">
@@ -14,6 +16,7 @@ const PortalNavbar = () => {
                         <Nav.Link href="#/users">משתמשים</Nav.Link>
                         <Nav.Link href="#/hours-report">דיווח שעות</Nav.Link>
                         <Nav.Link href="#/hours-approve">אישור שעות</Nav.Link>
+                        <Nav.Link onClick={handleLogout}>התנתקות</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
