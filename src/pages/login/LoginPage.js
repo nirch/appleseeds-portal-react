@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Container, Form, Button } from 'react-bootstrap'
 import './login.css'
 import server from '../../shared/server'
 import { Redirect } from 'react-router-dom'
+import ActiveUserContext from '../../shared/activeUserContext'
 
 const LoginPage = (props) => {
-    const { handleLogin, activeUser } = props;
+    const { handleLogin } = props;
     const [email, setEmail] = useState("");
     const [pwd, setPwd] = useState("");
+    const activeUser = useContext(ActiveUserContext);
 
     const login = () => {
 

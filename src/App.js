@@ -8,6 +8,7 @@ import UsersPage from './pages/users/UsersPage'
 import UserDetailsPage from './pages/users/UserDetailsPage'
 import HoursReportPage from './pages/hours/HoursReportPage'
 import HoursApprovePage from './pages/hours/HoursApprovePage'
+import ActiveUserContext from './shared/activeUserContext'
 
 import './App.css';
 
@@ -20,29 +21,31 @@ const App = () => {
   }
 
   return (
-    <Switch>
-      <Route exact path="/">
-        <LoginPage activeUser={activeUser} handleLogin={handleLogin} />
-      </Route>
-      <Route exact path="/courses">
-        <CoursesPage activeUser={activeUser} />
-      </Route>
-      <Route path="/courses/:id">
-        <CourseDetailsPage activeUser={activeUser} />
-      </Route>
-      <Route exact path="/users">
-        <UsersPage activeUser={activeUser} />
-      </Route>
-      <Route path="/users/:id">
-        <UserDetailsPage activeUser={activeUser} />
-      </Route>
-      <Route path="/hours-report">
-        <HoursReportPage activeUser={activeUser} />
-      </Route>
-      <Route path="/hours-approve">
-        <HoursApprovePage activeUser={activeUser} />
-      </Route>
-    </Switch>
+    <ActiveUserContext.Provider value={activeUser}>
+      <Switch>
+        <Route exact path="/">
+          <LoginPage handleLogin={handleLogin} />
+        </Route>
+        <Route exact path="/courses">
+          <CoursesPage />
+        </Route>
+        <Route path="/courses/:id">
+          <CourseDetailsPage />
+        </Route>
+        <Route exact path="/users">
+          <UsersPage />
+        </Route>
+        <Route path="/users/:id">
+          <UserDetailsPage />
+        </Route>
+        <Route path="/hours-report">
+          <HoursReportPage />
+        </Route>
+        <Route path="/hours-approve">
+          <HoursApprovePage />
+        </Route>
+      </Switch>
+    </ActiveUserContext.Provider>
   );
 }
 
