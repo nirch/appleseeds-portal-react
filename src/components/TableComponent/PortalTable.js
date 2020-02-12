@@ -9,7 +9,7 @@ export default class PortalTable extends Component {
         const { headers, data ,handleClick} = this.props;
         let headerRow = [];
         for(let i=0 ; i<headers.length ; i++){
-            headerRow.push(<th key={i}>{headers[i].key}</th>);
+            headerRow.push(<th key={i}>{headers[i].header}</th>);
         }
         let rows = [];
         for(let i=0 ; i<data.length ; i++){
