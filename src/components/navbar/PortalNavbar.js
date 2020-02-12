@@ -6,7 +6,7 @@ const PortalNavbar = (props) => {
     const { handleLogout } = props;
 
     return (
-        <div>
+        <div className="c-navbar">
             <Navbar bg="light" expand="lg">
                 <Navbar.Brand href="/">פורטל תפוח</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />

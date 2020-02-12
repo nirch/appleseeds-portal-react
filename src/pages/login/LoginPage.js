@@ -38,7 +38,7 @@ const LoginPage = (props) => {
 
     return (
 
-        <Container>
+        <Container className="p-login">
             <h1>התחברות</h1>
             <Form>
                 <Form.Group controlId="formBasicEmail">
