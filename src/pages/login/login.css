@@ -1,0 +1,82 @@
+#root{
+    font-family: 'Assistant', sans-serif;
+    height: 100vh;
+}
+.p-login{
+    background-color: rgb(27,22,110);
+    height: 100vh;
+    padding-left: 0px;
+    padding-right: 0px;
+    
+}
+.p-login > img{
+    width:100%;
+   padding: 38px 57px;
+    margin:auto;
+    display:block;
+    padding-top:38px;
+    
+}
+
+.p-login > Form{
+    width:360px;
+}
+.p-login  Form Form.Control{
+    width:50%;
+}
+.p-login > .loginbutton{
+    
+    width: 86%;
+   
+    height:24px;
+    margin:auto;
+    margin-top: 103px;
+    
+}
+.p-login > .loginbutton> input{
+    text-align: center;
+    font-weight: bold;
+    width:100%;
+    background-color: rgb(27,22,110);
+    border:1px white solid;
+    height:54px;
+    border-radius: 30px;
+    color: white;
+    
+
+}
+.p-login > .loginbutton:nth-child(3){
+    margin-top: 56px;
+}
+
+.p-login > .loginbutton:nth-child(4){
+    margin-top: 91px;
+   
+    height:54px;
+    border-radius: 30px;
+}
+
+.p-login > .loginbutton > button{
+    width:100%;
+    height: 50px;
+    border-radius: 30px;
+    color:rgb(27,22,110);
+    font-size: 30px;
+    font-weight: bold;
+    font-family: assistant-regular;
+
+}
+
+
+.p-login > .loginbutton> input::-webkit-input-placeholder {
+	color: inherit;
+}
+
+.p-login > .loginbutton> input::-moz-placeholder {
+	color: inherit;
+	opacity: 1;
+}
+
+.p-login > .loginbutton> input:-ms-input-placeholder {  
+	color: inherit;
+}
