@@ -7,9 +7,11 @@ export default class Table extends Component {
     }
     render(){
         const { headers, data, handleClick } = this.props;
+        const numOfColumns = headers.length;
+        const numOfRows = data.length;
         return(
             <table>
-                
+
             </table>
         )
     }
