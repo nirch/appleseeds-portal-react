@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import './PortalTable.css';
 
+
 export default class PortalTable extends Component {
     constructor(props) {
         super(props);
     }
     render(){
+        //headers - array of the headers that this table should show
+        //data - array of all the row's data, not only what's in the specific header
+        //handleClick - calling the function that handles a click on a row
         const { headers, data ,handleClick} = this.props;
         let headerRow = [];
         for(let i=0 ; i<headers.length ; i++){
@@ -19,7 +23,7 @@ export default class PortalTable extends Component {
                 if(data[i][headers[j].key]) {
                     currentData = <td key={j}>{data[i][headers[j].key]}</td>;
                 } else {
-                    currentData = <td></td>;
+                    currentData = <td key={j}></td>;
                 }
                 currentRow.push(currentData);
             }

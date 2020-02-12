@@ -4,9 +4,8 @@
 .headerRow th{
     text-align: center;    
     color: #5d5d5d;
-    font-weight: 600;
-    font-size: 12px;
-    font-family: Assistant;
+    font-size: 0.75em;
+    font-family: Assistant-SemiBold;
     height: 42px;
 }
 .tableRow {
@@ -15,7 +14,7 @@
 .tableRow td {
     text-align: center;
     color: #5d5d5d;
-    font-size: 12px;
-    font-family: Assistant;
+    font-size: 0.75em;
+    font-family: Assistant-Regular;
     height: 42px;
 }
