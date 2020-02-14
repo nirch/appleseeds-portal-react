@@ -50,12 +50,15 @@ const LoginPage = (props) => {
             </div>
             <div className="loginbutton">
 
-                <input value={email} placeholder="סיסמא" type="password" placeholder="סיסמא" onChange={e => setEmail(e.target.value)} >
+                <input value={pwd} placeholder="סיסמא" type="password" placeholder="סיסמא" onChange={e => setPwd(e.target.value)} >
                 </input>
             </div>
             <div className="loginbutton">
                 <button type="button" onClick={login}>התחברות</button>
 
+
+            </div>
+            <div className="errorlogin">
 
             </div>
 
