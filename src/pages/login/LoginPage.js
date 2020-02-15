@@ -9,13 +9,15 @@ import ActiveUserContext from '../../shared/activeUserContext'
 const LoginPage = (props) => {
     const { handleLogin } = props;
     const [email, setEmail] = useState("");
+    const [showerror, setShowErr] = useState("errorlogin errorhide");
     const [pwd, setPwd] = useState("");
     const activeUser = useContext(ActiveUserContext);
 
     const login = () => {
 
         if (!email || !pwd) {
-            alert("נא להזין פרטי משתמש");
+            setShowErr("errorlogin");
+            // alert("נא להזין פרטי משתמש");
             return;
         }
 
@@ -23,7 +25,8 @@ const LoginPage = (props) => {
         server(null, data, "login").then(res => {
             console.log(res);
             if (res.data.error) {
-                alert("error in login");
+                setShowErr("errorlogin");
+                //alert("error in login");
             } else {
                 handleLogin(res.data);
             }
@@ -58,26 +61,13 @@ const LoginPage = (props) => {
 
 
             </div>
-            <div className="errorlogin">
-
+            <div className={showerror}>
+                <img src="drawable-hdpi/noun_error_1156903.png" width="39px" />
+                <p>סיסמה שגויה</p>
+                <a onClick={() => setShowErr("errorlogin errorhide")}>X</a>
             </div>
 
-            {/* <Form>
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label></Form.Label>
-                    <Form.Control value={email} type="email" placeholder="אימייל" onChange={e => setEmail(e.target.value)} />
-                </Form.Group>
 
-                <Form.Group controlId="formBasicPassword">
-                    <Form.Label></Form.Label>
-                    <Form.Control value={pwd} type="password" placeholder="סיסמה" onChange={e => setPwd(e.target.value)} />
-                </Form.Group>
- <input value={email} placeholder="כניסה" type="email" placeholder="אימייל" onChange={e => setEmail(e.target.value)} >
-  </input>        
- <Button variant="primary" type="button" onClick={login}>
-                    התחבר
-                </Button>
-           </Form> */}
         </Container >
     );
 }

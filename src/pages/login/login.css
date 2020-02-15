@@ -86,3 +86,32 @@
     height: 120px;
     margin-top:24px;
 }
+.p-login > .errorlogin >img{
+    margin-top:45px;
+    margin-right:24px;
+}
+.p-login > .errorlogin > p{
+    color:#ffa1a1;
+    font-size: 20px;
+    line-height: 18px;
+   float: left;
+   margin-left: 170px;
+   margin-top: 55px;
+
+}
+.p-login > .errorlogin > a{
+    height:45px;
+    width:45px;
+    font-size: 30px;
+    color:#5d5d5d;
+    margin-right: 300px;
+    padding-bottom:100px;
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
+
+}
+.errorhide{
+    display: none;
+}
+
