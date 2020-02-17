@@ -14,7 +14,7 @@ export const PortalInput = props => {
 
   return (
     <div className="c-portal-input">
-      <label className="c-portal-input-lable">{props.inputTitle}</label>
+      <label className="c-portal-input-label">{props.inputTitle}</label>
       <input
         className="c-portal-input-element"
         value={inputValue}
