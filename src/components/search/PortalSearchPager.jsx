@@ -90,7 +90,7 @@ const PortalSearchPager = props => {
           placeholder={placeholder}
           onChange={ev => setInput(ev.target.value)}
           onKeyDown={ev => ifEnterPressed(ev)}
-          autoFocus
+          // autoFocus
         />
         {pageIndicator}
       </div>
