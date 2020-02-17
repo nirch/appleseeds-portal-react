@@ -63,7 +63,6 @@ const CoursesPage = props => {
   return (
     <div className="p-courses">
       <PortalNavbar handleLogout={handleLogout} />
-
       <PortalSearchPager
         placeholder={"חיפוש קורס"}
         pages={3}
