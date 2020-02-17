@@ -1,54 +1,66 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import './users.css'
 import PortalNavbar from '../../components/navbar/PortalNavbar';
 import ActiveUserContext from '../../shared/activeUserContext'
 import {Redirect} from 'react-router'
 import PortalTable from "../../components/TableComponent/PortalTable";
 import PortalSearchPager from '../../components/search/PortalSearchPager'
+import server from '../../shared/server'
 
 const UsersPage = (props) => {
     const {handleLogout} = props;
     const activeUser = useContext(ActiveUserContext);
 
-    //fetch data from db
-    //TODO
-    const users = [{
-        id: "12212",
-        fname: "Nir",
-        lname: "Channes",
-        email: 'emailasd@gmail.com'
-    }, {id: "2212", fname: "John", lname: "Doe", email: 'emailasd@gmail.com'}];
+
+    const [data, setData] = useState([]);
 
 
-    const [data, setData] = useState(users);
-    const [headers, setHeaders] = useState([{key: "fname", header: "שם פרטי"}, {
-        key: "lname",
+    const [headers, setHeaders] = useState([{key: "firstname", header: "שם פרטי"}, {
+        key: "lastname",
         header: "שם משפחה"
     }, {key: 'email', header: 'דוא"ל'}]);
 
 
+    //inner functions
+    //fetch data from db
+    //TODO
+    let payload = {"search": "", "sorting": "userid", "desc": false, "userstatus": 1, "page": -1};
+
+    useEffect(() => {
+        const fetchData = async () => {
+            let ans = await server(activeUser, payload, "SearchStaffUnderMe").then(res => {
+                console.log(res);
+                if (res.data.error) {
+                    alert("error in login");
+                } else {
+                    console.log(res.data);
+                    setData(res.data);
+                }
+            }, err => {
+                console.error(err);
+            });
+        };
+        fetchData();
+    }, []);
 
     if (!activeUser) {
         return <Redirect to='/'/>
     }
 
-
-    //inner functions
-
     const handleSearch = (searchText) => {
-        if (searchText){
+        if (searchText) {
             let newData = data.filter(item => {
                 return (item.fname.toLowerCase().includes(searchText) ||
-                item.lname.toLowerCase().includes(searchText) ||
-                item.email.toLowerCase().includes(searchText));
+                    item.lname.toLowerCase().includes(searchText) ||
+                    item.email.toLowerCase().includes(searchText));
             });
             setData(newData);
-        }
-        else {
-            setData(users);
+        } else {
+            setData(data);
         }
     };
 
+    debugger
 
     return (
         <div>
