@@ -1,26 +1,27 @@
 .c-search .search-comp {
-    position: relative;
-    height: 0.703%;
-    border-radius: 1.5em;
+  position: relative;
+  height: 0.703%;
+  border-radius: 1.5em;
+  font-family: assistant-light;
 }
 
 .c-search .search-input {
-    border: 1px solid lightgray;
-    border-radius: 1.5em;
-    padding: 0 1em;
+  border: 1px solid lightgray;
+  border-radius: 1.5em;
+  padding: 0 1em;
 }
 
 .c-search .page-indicator {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .c-search .absolute {
-    position: absolute;
-    top: 16%;
-    left: 1.7%;
+  position: absolute;
+  top: 16%;
+  left: 1.7%;
 }
 
 .c-search .disabled {
-    opacity: 50%;
+  opacity: 50%;
 }
