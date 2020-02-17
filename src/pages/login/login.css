@@ -11,15 +11,15 @@
 }
 .p-login > img{
     width:100%;
-   padding: 38px 57px;
+   padding: 10% 16%;
     margin:auto;
     display:block;
-    padding-top:38px;
+   
     
 }
 
 .p-login > Form{
-    width:360px;
+    width:100%;
 }
 .p-login  Form Form.Control{
     width:50%;
@@ -28,37 +28,37 @@
     
     width: 86%;
    
-    height:24px;
+    height:8%;
     margin:auto;
-    margin-top: 103px;
+    margin-top: 21%;
     
 }
 .p-login > .loginbutton> input{
     text-align: center;
-    font-weight: bold;
+    font-size: 24px;
     width:100%;
     background-color: rgb(27,22,110);
     border:1px white solid;
-    height:54px;
+    height:100%;
     border-radius: 30px;
     color: white;
     
 
 }
 .p-login > .loginbutton:nth-child(3){
-    margin-top: 56px;
+    margin-top: 10%;
 }
 
 .p-login > .loginbutton:nth-child(4){
-    margin-top: 91px;
+    margin-top: 33%;
    
-    height:54px;
+    height:10%;
     border-radius: 30px;
 }
 
 .p-login > .loginbutton > button{
     width:100%;
-    height: 50px;
+    height: 80%;
     border-radius: 30px;
     color:rgb(27,22,110);
     font-size: 30px;
@@ -83,11 +83,11 @@
 .errorlogin {
     background-color: white;
     width:100%;
-    height: 120px;
-    margin-top:24px;
+    height: 16%;
+    margin-top:1%;
 }
 .p-login > .errorlogin >img{
-    margin-top:45px;
+    margin-top:8%;
     margin-right:24px;
 }
 .p-login > .errorlogin > p{
@@ -96,22 +96,32 @@
     line-height: 18px;
    float: left;
    margin-left: 170px;
-   margin-top: 55px;
+   margin-top: 10%;
 
 }
 .p-login > .errorlogin > a{
-    height:45px;
-    width:45px;
+    height:20%;
+    width:20%;
     font-size: 30px;
     color:#5d5d5d;
-    margin-right: 300px;
-    padding-bottom:100px;
+  /*  margin-right: 300px;
+    padding-bottom:100px; */
     position: absolute;
-    bottom: 5px;
-    right: 15px;
+    bottom: -5%;
+    left: 0%;
 
 }
 .errorhide{
     display: none;
+}
+.p-login > .text-center{
+    margin-top:9%!important;
+}
+.p-login > .text-center > a{
+    color: white;
+    font-size: 22px;
+   
+   
+    
 }
 

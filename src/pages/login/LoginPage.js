@@ -66,6 +66,9 @@ const LoginPage = (props) => {
                 <p>סיסמה שגויה</p>
                 <a onClick={() => setShowErr("errorlogin errorhide")}>X</a>
             </div>
+            <div className="text-center">
+                <a>שכחתי סיסמה</a>
+            </div>
 
 
         </Container >
