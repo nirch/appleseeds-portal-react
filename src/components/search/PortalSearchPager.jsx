@@ -1,25 +1,29 @@
 import React, { useState } from "react";
-import { Container, Form } from "react-bootstrap";
 import "./search.css";
 
-//TODO: Generic component to search and page between results.
+// Generic component to search and page between results.
 
-//TODO: PROPS:
-//TODO: placeholder. string. the placeholder string for the search input
-//TODO: pages. number. the total number of pages the user can page through.
-//TODO:        If this number is 0 do not render the paging on the left.
-//TODO: currentPage. number.
-//TODO: handleSearch. callback function. Gets called when the user submits (press enter)
-//TODO:               on the search input. Sends the input text.
-//TODO: pageChange. callback function. Gets called when the user clicks on the page arrows.
-//TODO:             Sends the new page number.
+// PROPS:
+//  placeholder. string. the placeholder string for the search input
+//  pages. number. the total number of pages the user can page through.
+//         If this number is 0 do not render the paging on the left.
+//  handleSearch. callback function. Gets called when the user submits (press enter)
+//                on the search input. Sends the input text.
+//  const handleSearch = searchInput => {
+//  console.log(searchInput);
+//  };
+//  pageChange. callback function. Gets called when the user clicks on the page arrows.
+//              Sends the new page number.
+//  const pageChange = currPage => {
+//  console.log(currPage);
+//  };
 
-//TODO: Used in: USERS PAGE, COURSES PAGE
+//  Used in: USERS PAGE, COURSES PAGE
 
 const PortalSearchPager = props => {
-  const { placeholder, pages, currentPage, handleSearch, pageChange } = props;
+  const { placeholder, pages, handleSearch, pageChange } = props;
   const [input, setInput] = useState("");
-  const [currPage, setCurrPage] = useState(currentPage);
+  const [currPage, setCurrPage] = useState(1);
 
   //   Sets 50% opacity to the next/prev page buttons if the currPage is the first or the last page
   let prevPageClasses = ["prev-page"];
@@ -39,10 +43,9 @@ const PortalSearchPager = props => {
   // after pressing the nex page button
   const increasePageIndicator = () => {
     if (currPage < pages) {
-      //2
-      setCurrPage(currPage + 1);
-      console.log(currPage);
-      pageChange(currPage);
+      const newCurrPage = currPage + 1;
+      setCurrPage(newCurrPage);
+      pageChange(newCurrPage);
     }
   };
 
@@ -50,9 +53,9 @@ const PortalSearchPager = props => {
   // after pressing the nex page button
   const decreasePageIndicator = () => {
     if (currPage > 1) {
-      setCurrPage(currPage - 1);
-      console.log(currPage);
-      pageChange(currPage);
+      const newCurrPage = currPage - 1;
+      setCurrPage(newCurrPage);
+      pageChange(newCurrPage);
     }
   };
 
@@ -78,25 +81,20 @@ const PortalSearchPager = props => {
     ) : null;
 
   return (
-    <Container className="c-search">
-      <Form>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label></Form.Label>
-          <div className="search-comp">
-            <Form.Control
-              className="search-input"
-              value={input}
-              type="text"
-              placeholder={placeholder}
-              onChange={ev => setInput(ev.target.value)}
-              onKeyDown={ev => ifEnterPressed(ev)}
-              autoFocus
-            />
-            {pageIndicator}
-          </div>
-        </Form.Group>
-      </Form>
-    </Container>
+    <div className="c-search">
+      <div className="search-comp">
+        <input
+          className="search-input"
+          value={input}
+          type="text"
+          placeholder={placeholder}
+          onChange={ev => setInput(ev.target.value)}
+          onKeyDown={ev => ifEnterPressed(ev)}
+          autoFocus
+        />
+        {pageIndicator}
+      </div>
+    </div>
   );
 };
 
