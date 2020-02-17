@@ -24,7 +24,7 @@ const PortalInputSelect = props => {
     <div className="c-portal-input-select">
       <label className="c-portal-input-select-label">{inputTitle}</label>
       <select
-        className="c-portal-inputselect-element"
+        className="c-portal-input-select-element"
         value={inputSelectValue}
         onChange={event => {
           setInputSelectValue(event.target.value);
