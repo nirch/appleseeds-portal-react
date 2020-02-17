@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import "../components/PortalInput.css";
 
 // <PortalInput/> Component Props:
-// inputTitle (String) - will be rendering the Title Lable  - *not Required
-// inputPlaceholder (String) - will be rendering the input Placeholder
-// handleChange () - callback from Parent page/component
+//  - inputTitle (String) - will be rendering the Title Lable  - *not Required
+//  - inputPlaceholder (String) - will be rendering the input Placeholder
+//  - handleChange () - callback from Parent page/component
 
-export const PortalInput = props => {
+ const PortalInput = (props) => {
   const {inputTitle, inputPlaceholder, handleChange} = props;
   const [inputValue, setInputValue] = useState("");
 
