@@ -40,3 +40,5 @@ export const PortalButtonSet = props => {
     </Container>
   );
 };
+
+export default PortalButtonSet;

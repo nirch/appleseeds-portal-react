@@ -11,12 +11,10 @@ import "../components/PortalInput.css";
 export const PortalInput = props => {
   const {} = props;
   const [inputValue, setInputValue] = useState("");
-  
+
   return (
     <div className="c-portal-input">
-      <lable className="c-portal-input-lable" />
-      {props.inputTitle}
-
+      <label className="c-portal-input-lable">{props.inputTitle}</label>
       <input
         className="c-portal-input-element"
         value={inputValue}
@@ -29,3 +27,5 @@ export const PortalInput = props => {
     </div>
   );
 };
+
+export default PortalInput;
