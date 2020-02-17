@@ -4,28 +4,36 @@ import './login.css'
 import server from '../../shared/server'
 import { Redirect } from 'react-router-dom'
 import ActiveUserContext from '../../shared/activeUserContext'
-
+import ShowAlert from '../../components/ShowAlert/ShowAlert'
 
 const LoginPage = (props) => {
     const { handleLogin } = props;
     const [email, setEmail] = useState("");
-    const [showerror, setShowErr] = useState("errorlogin errorhide");
+    const [textError, setTextError] = useState("");
     const [pwd, setPwd] = useState("");
     const activeUser = useContext(ActiveUserContext);
+    var type = "error";
+
 
     const login = () => {
 
         if (!email || !pwd) {
-            setShowErr("errorlogin");
+
+            setTextError("נא להזין שם משתמש וסיסמה");
             // alert("נא להזין פרטי משתמש");
             return;
         }
+
 
         const data = { email, pass: pwd };
         server(null, data, "login").then(res => {
             console.log(res);
             if (res.data.error) {
-                setShowErr("errorlogin");
+
+                setTextError("אימייל או סיסמה שגויים");
+
+
+
                 //alert("error in login");
             } else {
                 handleLogin(res.data);
@@ -34,10 +42,24 @@ const LoginPage = (props) => {
             console.error(err);
         })
     }
+    const setEmailCleanError = (e) => {
+        setEmail(e.target.value);
+        if (textError != "") {
+            setTextError("")
+        }
 
+    }
+    const setPassCleanError = (e) => {
+        setPwd(e.target.value);
+        if (textError != "") {
+            setTextError("")
+        }
+
+    }
     if (activeUser) {
         return <Redirect to='/courses' />
     }
+    const showerror = textError === "" ? "errorlogin errorhide" : "errorlogin";
 
     return (
 
@@ -48,12 +70,11 @@ const LoginPage = (props) => {
 
             <div className="loginbutton">
 
-                <input value={email} type="email" placeholder="אימייל" onChange={e => setEmail(e.target.value)} >
-                </input>
+                <input value={email} type="email" placeholder="אימייל" onChange={e => setEmailCleanError(e)} />
             </div>
             <div className="loginbutton">
 
-                <input value={pwd} placeholder="סיסמא" type="password" placeholder="סיסמא" onChange={e => setPwd(e.target.value)} >
+                <input value={pwd} placeholder="סיסמא" type="password" placeholder="סיסמה" onChange={e => setPassCleanError(e)} >
                 </input>
             </div>
             <div className="loginbutton">
@@ -62,13 +83,19 @@ const LoginPage = (props) => {
 
             </div>
             <div className={showerror}>
+                <ShowAlert type={type} p_Text={textError} setTextError={setTextError} />
+            </div>
+
+            {/*
+            
                 <img src="drawable-hdpi/noun_error_1156903.png" width="39px" />
                 <p>סיסמה שגויה</p>
-                <a onClick={() => setShowErr("errorlogin errorhide")}>X</a>
+                <a onClick={() => setTextError(false)}>X</a>
             </div>
-            <div className="text-center">
+    */}
+            {/*} <div className="text-center">
                 <a>שכחתי סיסמה</a>
-            </div>
+    </div> */}
 
 
         </Container >
