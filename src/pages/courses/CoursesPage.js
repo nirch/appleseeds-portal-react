@@ -11,9 +11,16 @@ const CoursesPage = props => {
   const { handleLogout } = props;
   const activeUser = useContext(ActiveUserContext);
   const [activeKey, setActiveKey] = useState(0);
+  const [courseId, setCourseId] = useState("");
 
   if (!activeUser) {
     return <Redirect to="/" />;
+  }
+
+  const courseUrl = "/courses/" + courseId;
+
+  if (courseId) {
+    return <Redirect to={courseUrl} />;
   }
 
   const handleSearch = searchInput => {
@@ -55,9 +62,13 @@ const CoursesPage = props => {
     { key: 1, label: "לא פעילים" }
   ];
 
-  const handleClick = btnClicked => {
+  const handleActiveBtnClick = btnClicked => {
     console.log(btnClicked);
     setActiveKey(btnClicked.key);
+  };
+
+  const handleCourseSelect = courseSelected => {
+    setCourseId(courseSelected.id);
   };
 
   return (
@@ -70,10 +81,14 @@ const CoursesPage = props => {
         handleSearch={handleSearch}
         pageChange={pageChange}
       />
-      <PortalTable headers={headers} data={data} />
+      <PortalTable
+        headers={headers}
+        data={data}
+        handleClick={handleCourseSelect}
+      />
       <PortalButtonSet
         buttons={buttons}
-        handleClick={handleClick}
+        handleClick={handleActiveBtnClick}
         activeKey={activeKey}
       />
     </div>

@@ -63,19 +63,19 @@ const PortalSearchPager = props => {
     pages && pages > 1 ? (
       <div className="absolute">
         <div className="page-indicator">
-          <div
+          <img
+            alt="Previous Page"
+            src="images/arrow-right.png"
             className={prevPageClasses.join(" ")}
             onClick={decreasePageIndicator}
-          >
-            <img alt="Previous Page" src="images/arrow-right.png" />{" "}
-          </div>
-          <div>{currPage}</div>
-          <div
+          />
+          <div className="currPage">{currPage}</div>
+          <img
+            alt="Next Page"
+            src="images/arrow-left.png"
             className={nextPageClasses.join(" ")}
             onClick={increasePageIndicator}
-          >
-            <img alt="Next Page" src="images/arrow-left.png" />
-          </div>
+          />
         </div>
       </div>
     ) : null;
