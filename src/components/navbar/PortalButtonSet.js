@@ -10,7 +10,7 @@ import { Row, Col, Button, Container } from "react-bootstrap";
 // - handleClick. callback function. invoked when the user clicks on one of the buttons,
 //      it sends the object of the clicked button
 
-const PortalButtonSet = props => {
+export const PortalButtonSet = props => {
   const { buttons, handleClick, activeKey } = props;
   // Mapping buttons[] to JSX items
   let buttonsComp = buttons.map(item => {
@@ -40,5 +40,3 @@ const PortalButtonSet = props => {
     </Container>
   );
 };
-
-export default PortalButtonSet;
