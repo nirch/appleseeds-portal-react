@@ -2,6 +2,20 @@ import React, { useState } from "react";
 import { Container, Form } from "react-bootstrap";
 import "./search.css";
 
+//TODO: Generic component to search and page between results.
+
+//TODO: PROPS:
+//TODO: placeholder. string. the placeholder string for the search input
+//TODO: pages. number. the total number of pages the user can page through.
+//TODO:        If this number is 0 do not render the paging on the left.
+//TODO: currentPage. number.
+//TODO: handleSearch. callback function. Gets called when the user submits (press enter)
+//TODO:               on the search input. Sends the input text.
+//TODO: pageChange. callback function. Gets called when the user clicks on the page arrows.
+//TODO:             Sends the new page number.
+
+//TODO: Used in: USERS PAGE, COURSES PAGE
+
 const PortalSearchPager = props => {
   const { placeholder, pages, currentPage, handleSearch, pageChange } = props;
   const [input, setInput] = useState("");
