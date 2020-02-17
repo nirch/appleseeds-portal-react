@@ -6,6 +6,7 @@
 }
 
 .c-search .search-input {
+  background-color: lightgray;
   border: 1px solid lightgray;
   border-radius: 1.5em;
   padding: 0 1em;

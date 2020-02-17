@@ -8,10 +8,10 @@ import "../components/PortalInput.css";
 // inputPlaceholder (String) - will be rendering the input Placeholder
 // handleChange () - callback from Parent page/component
 
-export const PortalInput = props => {
+const PortalInput = props => {
   const {} = props;
   const [inputValue, setInputValue] = useState("");
-  
+
   return (
     <div className="c-portal-input">
       <lable className="c-portal-input-lable" />
@@ -29,3 +29,5 @@ export const PortalInput = props => {
     </div>
   );
 };
+
+export default PortalInput;
