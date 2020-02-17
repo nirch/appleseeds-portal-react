@@ -9,19 +9,19 @@ import "../components/PortalInput.css";
 // handleChange () - callback from Parent page/component
 
 export const PortalInput = props => {
-  const {} = props;
+  const {inputTitle, inputPlaceholder, handleChange} = props;
   const [inputValue, setInputValue] = useState("");
 
   return (
     <div className="c-portal-input">
-      <label className="c-portal-input-label">{props.inputTitle}</label>
+      <label className="c-portal-input-label">{inputTitle}</label>
       <input
         className="c-portal-input-element"
         value={inputValue}
-        placeholder={props.inputPlaceholder}
+        placeholder={inputPlaceholder}
         onChange={event => {
           setInputValue(event.target.value);
-          props.handleChange(event.target.value);
+          handleChange(event.target.value);
         }}
       />
     </div>
