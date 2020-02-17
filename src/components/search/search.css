@@ -19,6 +19,9 @@
   box-shadow: 0px 0px 2px #0066ff;
 }
 
+.c-search .currPage {
+  margin-top: -1px;
+}
 .c-search .page-indicator {
   display: flex;
   align-items: center;
