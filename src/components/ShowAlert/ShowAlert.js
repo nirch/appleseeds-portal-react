@@ -5,6 +5,11 @@ import server from '../../shared/server'
 import { Redirect } from 'react-router-dom'
 import ActiveUserContext from '../../shared/activeUserContext'
 
+// this function get two props and function 
+//1. type - can get "error" or info and according to that select the icon and the color of the text 
+//      pink for error and blue for info 
+//2. p_text - the text the use want to be present on the window 
+//3. The function "setTextError" is bollean and use for display or hide the window
 
 const ShowAlert = (props) => {
     const { type, p_Text, setTextError } = props;
