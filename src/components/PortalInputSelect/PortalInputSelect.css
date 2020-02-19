@@ -1,0 +1,24 @@
+.c-portal-input-select  {
+    box-shadow: 0px 3px 3px 0px rgba(26,0,0,0.1);
+    width: 100%;
+    height: 42px;
+
+}
+.c-portal-input-select label {
+    margin-bottom: 0px;
+    margin-right: 31px;
+    display: block;
+    font-family: Assistant-SemiBold;
+    font-size: 12px;
+}
+.c-portal-input-select-element {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    margin-right: 31px;
+    font-family: Assistant-light;
+    font-size: 12px;
+    width: 88%;
+    background: url("./arrow-down.png") 4% / 6% no-repeat #fff;
+}
