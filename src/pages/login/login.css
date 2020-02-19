@@ -100,7 +100,7 @@
     right: 0px;
     bottom: 0px; 
  animation-name: error;
-  animation-duration: 3s;  
+  animation-duration: 0.5s;  
   
   animation-fill-mode: backwards;
 }

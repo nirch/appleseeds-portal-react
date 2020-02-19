@@ -12,7 +12,7 @@ const LoginPage = (props) => {
     const [textError, setTextError] = useState("");
     const [pwd, setPwd] = useState("");
     const activeUser = useContext(ActiveUserContext);
-    var type = "error";
+    const type = "error";
 
 
     const login = () => {
@@ -39,6 +39,7 @@ const LoginPage = (props) => {
                 handleLogin(res.data);
             }
         }, err => {
+            setTextError("שגיאה בשרת, נסה שוב מאוחר יותר");
             console.error(err);
         })
     }
@@ -85,18 +86,6 @@ const LoginPage = (props) => {
             <div className={showerror}>
                 <ShowAlert type={type} p_Text={textError} setTextError={setTextError} />
             </div>
-
-            {/*
-            
-                <img src="drawable-hdpi/noun_error_1156903.png" width="39px" />
-                <p>סיסמה שגויה</p>
-                <a onClick={() => setTextError(false)}>X</a>
-            </div>
-    */}
-            {/*} <div className="text-center">
-                <a>שכחתי סיסמה</a>
-    </div> */}
-
 
         </Container >
     );
