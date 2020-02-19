@@ -5,6 +5,7 @@ import ActiveUserContext from '../../shared/activeUserContext'
 import { Redirect } from 'react-router-dom'
 import HoursReportTable from '../../components/hours/HoursReportTable'
 import jsonReports from './Reports.json';
+import PortalDayMonthPickerComponent from '../../components/PortalDayMonthPickerComponent/PortalDayMonthPickerComponent'
 
 
 const HoursReportPage = (props) => {
@@ -20,6 +21,7 @@ const HoursReportPage = (props) => {
     return (
         <div>
             <PortalNavbar handleLogout={handleLogout}/>
+            <PortalDayMonthPickerComponent/>
             <HoursReportTable reports={reports}/>
         </div>
     );
