@@ -1,32 +1,36 @@
 import React, { useState } from "react";
-import { Container, Form } from "react-bootstrap";
 import "./search.css";
 
-//TODO: Generic component to search and page between results.
+// Generic component to search and page between results.
 
-//TODO: PROPS:
-//TODO: placeholder. string. the placeholder string for the search input
-//TODO: pages. number. the total number of pages the user can page through.
-//TODO:        If this number is 0 do not render the paging on the left.
-//TODO: currentPage. number.
-//TODO: handleSearch. callback function. Gets called when the user submits (press enter)
-//TODO:               on the search input. Sends the input text.
-//TODO: pageChange. callback function. Gets called when the user clicks on the page arrows.
-//TODO:             Sends the new page number.
+// PROPS:
+//  placeholder. string. the placeholder string for the search input
+//  pages. number. the total number of pages the user can page through.
+//         If this number is 0 do not render the paging on the left.
+//  handleSearch. callback function. Gets called when the user submits (press enter)
+//                on the search input. Sends the input text.
+//  const handleSearch = searchInput => {
+//  console.log(searchInput);
+//  };
+//  pageChange. callback function. Gets called when the user clicks on the page arrows.
+//              Sends the new page number.
+//  const pageChange = currPage => {
+//  console.log(currPage);
+//  };
 
-//TODO: Used in: USERS PAGE, COURSES PAGE
+//  Used in: USERS PAGE, COURSES PAGE
 
 const PortalSearchPager = props => {
-  const { placeholder, pages, currentPage, handleSearch, pageChange } = props;
+  const { placeholder, pages, handleSearch, pageChange, currentPage } = props;
   const [input, setInput] = useState("");
-  const [currPage, setCurrPage] = useState(currentPage);
+  // const [currPage, setCurrPage] = useState(currentPage);
 
   //   Sets 50% opacity to the next/prev page buttons if the currPage is the first or the last page
   let prevPageClasses = ["prev-page"];
-  if (currPage === 1) prevPageClasses.push("disabled");
+  if (currentPage === 0) prevPageClasses.push("disabled");
 
   let nextPageClasses = ["prev-page"];
-  if (currPage === pages) nextPageClasses.push("disabled");
+  if (currentPage === pages) nextPageClasses.push("disabled");
 
   // Function that sends the input value as a callback to the parent component
   const ifEnterPressed = ev => {
@@ -38,21 +42,18 @@ const PortalSearchPager = props => {
   // Function that sends the currPage value as a callback to the parent component
   // after pressing the nex page button
   const increasePageIndicator = () => {
-    if (currPage < pages) {
-      //2
-      setCurrPage(currPage + 1);
-      console.log(currPage);
-      pageChange(currPage);
+    if (currentPage < pages) {
+      const newCurrentPage = currentPage + 1;
+      pageChange(newCurrentPage);
     }
   };
 
   // Function that sends the currPage value as a callback to the parent component
   // after pressing the nex page button
   const decreasePageIndicator = () => {
-    if (currPage > 1) {
-      setCurrPage(currPage - 1);
-      console.log(currPage);
-      pageChange(currPage);
+    if (currentPage > 0) {
+      const newCurrentPage = currentPage - 1;
+      pageChange(newCurrentPage);
     }
   };
 
@@ -60,43 +61,38 @@ const PortalSearchPager = props => {
     pages && pages > 1 ? (
       <div className="absolute">
         <div className="page-indicator">
-          <div
+          <img
+            alt="Previous Page"
+            src="images/arrow-right.png"
             className={prevPageClasses.join(" ")}
             onClick={decreasePageIndicator}
-          >
-            <img alt="Previous Page" src="images/arrow-right.png" />{" "}
-          </div>
-          <div>{currPage}</div>
-          <div
+          />
+          <div className="currPage">{currentPage + 1}</div>
+          <img
+            alt="Next Page"
+            src="images/arrow-left.png"
             className={nextPageClasses.join(" ")}
             onClick={increasePageIndicator}
-          >
-            <img alt="Next Page" src="images/arrow-left.png" />
-          </div>
+          />
         </div>
       </div>
     ) : null;
 
   return (
-    <Container className="c-search">
-      <Form>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label></Form.Label>
-          <div className="search-comp">
-            <Form.Control
-              className="search-input"
-              value={input}
-              type="text"
-              placeholder={placeholder}
-              onChange={ev => setInput(ev.target.value)}
-              onKeyDown={ev => ifEnterPressed(ev)}
-              autoFocus
-            />
-            {pageIndicator}
-          </div>
-        </Form.Group>
-      </Form>
-    </Container>
+    <div className="c-search">
+      <div className="search-comp">
+        <input
+          className="search-input"
+          value={input}
+          type="text"
+          placeholder={placeholder}
+          onChange={ev => setInput(ev.target.value)}
+          onKeyDown={ev => ifEnterPressed(ev)}
+          // autoFocus
+        />
+        {pageIndicator}
+      </div>
+    </div>
   );
 };
 

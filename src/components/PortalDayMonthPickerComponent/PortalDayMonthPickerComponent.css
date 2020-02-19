@@ -1,0 +1,14 @@
+.c-day-month-picker
+{
+    text-align: center;
+    font-size: 1.75em;
+    color: #5d5d5d;
+    
+}
+
+.c-day-month-picker .date-text{
+    user-select: none;
+    width:200px;
+    text-align: center;
+    
+}
