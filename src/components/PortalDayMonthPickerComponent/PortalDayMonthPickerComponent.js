@@ -20,9 +20,7 @@ const PortalDayMonthPickerComponent = (props) => {
     {
         if (displayType==="day")
         { 
-            var options = { day: 'numeric',month: 'numeric', year: 'numeric'  }; 
            return aDate.toLocaleDateString('en-GB') ;
-
         }
         else{
             return months[aDate.getMonth()] +" "+aDate.getFullYear() ;
@@ -109,11 +107,11 @@ const PortalDayMonthPickerComponent = (props) => {
         <div className="c-day-month-picker">
         <ButtonGroup aria-label="Basic example">
             <div onClick={() =>handleMinusClick() } >
-                <img src="images/arrow-right.png" ></img>
+                <img src="images/arrow-right.png" alt="-" ></img>
             </div>
             <div className="date-text" >{showText(theDateToShow)}</div>
             <div  onClick={() => { handlePlusClick() }}>
-                <img src="images/arrow-left.png" ></img>
+                <img src="images/arrow-left.png" alt="+"></img>
             </div>
         </ButtonGroup>
         </div>

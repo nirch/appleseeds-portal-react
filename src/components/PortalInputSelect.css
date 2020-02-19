@@ -1,3 +1,10 @@
 .c-portal-input-select  {
     border: 1px solid gray;
 }
+
+.c-portal-input-select-element {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(http://www.stackoverflow.com/favicon.ico) 96% / 15% no-repeat #eee;
+}

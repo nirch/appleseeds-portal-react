@@ -4,58 +4,90 @@ import './login.css'
 import server from '../../shared/server'
 import { Redirect } from 'react-router-dom'
 import ActiveUserContext from '../../shared/activeUserContext'
+import ShowAlert from '../../components/ShowAlert/ShowAlert'
 
 const LoginPage = (props) => {
     const { handleLogin } = props;
     const [email, setEmail] = useState("");
+    const [textError, setTextError] = useState("");
     const [pwd, setPwd] = useState("");
     const activeUser = useContext(ActiveUserContext);
+    const type = "error";
+
 
     const login = () => {
 
-        if(!email || !pwd)
-		{
-			alert("נא להזין פרטי משתמש");
-			return;
+        if (!email || !pwd) {
+
+            setTextError("נא להזין שם משתמש וסיסמה");
+            // alert("נא להזין פרטי משתמש");
+            return;
         }
-        
-        const data = {email, pass: pwd};
+
+
+        const data = { email, pass: pwd };
         server(null, data, "login").then(res => {
             console.log(res);
             if (res.data.error) {
-                alert("error in login");
+
+                setTextError("אימייל או סיסמה שגויים");
+
+
+
+                //alert("error in login");
             } else {
                 handleLogin(res.data);
             }
         }, err => {
+            setTextError("שגיאה בשרת, נסה שוב מאוחר יותר");
             console.error(err);
         })
     }
+    const setEmailCleanError = (e) => {
+        setEmail(e.target.value);
+        if (textError != "") {
+            setTextError("")
+        }
 
+    }
+    const setPassCleanError = (e) => {
+        setPwd(e.target.value);
+        if (textError != "") {
+            setTextError("")
+        }
+
+    }
     if (activeUser) {
         return <Redirect to='/courses' />
     }
+    const showerror = textError === "" ? "errorlogin errorhide" : "errorlogin";
 
     return (
 
+
+
         <Container className="p-login">
-            <h1>התחברות</h1>
-            <Form>
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label></Form.Label>
-                    <Form.Control value={email} type="email" placeholder="אימייל" onChange={e => setEmail(e.target.value)}/>
-                </Form.Group>
+            <img src="drawable-hdpi/01.png" />
 
-                <Form.Group controlId="formBasicPassword">
-                    <Form.Label></Form.Label>
-                    <Form.Control value={pwd} type="password" placeholder="סיסמה" onChange={e => setPwd(e.target.value)}/>
-                </Form.Group>
+            <div className="loginbutton">
 
-                <Button variant="primary" type="button" onClick={login}>
-                    התחבר
-                </Button>
-            </Form>
-        </Container>
+                <input value={email} type="email" placeholder="אימייל" onChange={e => setEmailCleanError(e)} />
+            </div>
+            <div className="loginbutton">
+
+                <input value={pwd} placeholder="סיסמא" type="password" placeholder="סיסמה" onChange={e => setPassCleanError(e)} >
+                </input>
+            </div>
+            <div className="loginbutton">
+                <button type="button" onClick={login}>התחברות</button>
+
+
+            </div>
+            <div className={showerror}>
+                <ShowAlert type={type} p_Text={textError} setTextError={setTextError} />
+            </div>
+
+        </Container >
     );
 }
 
