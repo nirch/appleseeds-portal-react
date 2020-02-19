@@ -31,7 +31,9 @@ const HoursApprovePage = (props) => {
                     <WorkerHoursReportingItem ></WorkerHoursReportingItem>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="0">
-                    <Card.Body>Hello! I'm the body</Card.Body>
+                    <Card.Body>
+                        <ReportedHoursDetailsItem></ReportedHoursDetailsItem>
+                    </Card.Body>
                     </Accordion.Collapse>
                 </Card>
                 <Card>

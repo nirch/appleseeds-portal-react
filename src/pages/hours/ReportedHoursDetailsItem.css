@@ -1,0 +1,95 @@
+.c-reported-hours-details-item{
+    direction: rtl;
+}
+
+.c-reported-hours-details-item .radio-action{
+    text-align: left;
+    display: flex;
+    flex-direction: row-reverse;
+       
+}
+
+/* delete the standard format*/
+.c-reported-hours-details-item .radio-action input[type=radio   ]:not(old){
+    margin  : 0;
+    padding : 0;
+    opacity : 0;
+    font-size : 1em;
+  }
+
+/* position the label*/
+.c-reported-hours-details-item .radio-action input[type=radio]:not(old) + label{
+   margin-left  : 0em;
+   line-height  : 1.5em; 
+    font-size: 8pt; 
+   text-align: center;
+} 
+
+/* uncheck*/
+.c-reported-hours-details-item .radio-action input[type=radio   ]:not(old) + label > div.radio{
+  display          : block;
+  width            : 0.875em;
+  height           : 0.875em;
+  margin           : 0.25em;
+  border           : 0.0625em solid #707070;
+  border-radius    :50%;
+   font-size: 16pt;
+}
+
+/* radio*/
+.c-reported-hours-details-item .radio-action input[type=radio]:not(old):checked + label > div.radio > span{
+    display          : block;
+    width            : 0.5em;
+    height           : 0.5em;
+    margin           : 0.125em;
+    border-width      : 0.05em;
+    border-style:  solid;
+    border-radius    : 50%;
+
+}
+/*text color*/
+.c-reported-hours-details-item .radio-action label.approved{
+    color: var(--hours-approved);
+}
+
+.c-reported-hours-details-item .radio-action label.rejected{
+    color: var(--hours-rejected);
+}
+
+.c-reported-hours-details-item .radio-action label.pending{
+    color: var(--hours-pending);
+}
+/*inner circle color*/
+.c-reported-hours-details-item .radio-action input[type=radio]:not(old):checked + label > div.radio.approved> span{
+    background: var(--hours-approved);
+    border-color: var(--hours-approved);
+}
+.c-reported-hours-details-item .radio-action input[type=radio]:not(old):checked + label > div.radio.rejected> span{
+    background: var(--hours-rejected);
+    border-color: var(--hours-rejected);
+}
+
+.c-reported-hours-details-item .radio-action input[type=radio]:not(old):checked + label > div.radio.pending> span{
+    background: var(--hours-pending);
+    border-color: var(--hours-pending);
+}
+
+/*outer circle color*/
+.c-reported-hours-details-item .radio-action input[type=radio]:not(old):checked + label > div.radio.pending{
+    border-color: var(--hours-pending);
+}
+
+.c-reported-hours-details-item .radio-action input[type=radio]:not(old):checked + label > div.radio.approved{
+    border-color: var(--hours-approved);
+}
+
+.c-reported-hours-details-item .radio-action input[type=radio]:not(old):checked + label > div.radio.rejected{
+    border-color: var(--hours-rejected);
+}
+
+
+
+
+
+
+
