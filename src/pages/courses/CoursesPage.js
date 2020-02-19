@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./courses.css";
 import PortalNavbar from "../../components/navbar/PortalNavbar";
 import ActiveUserContext from "../../shared/activeUserContext";
@@ -6,69 +6,89 @@ import { Redirect } from "react-router-dom";
 import PortalSearchPager from "../../components/search/PortalSearchPager";
 import PortalTable from "../../components/TableComponent/PortalTable";
 import PortalButtonSet from "../../components/navbar/PortalButtonSet";
+import server from "../../shared/server";
 
 const CoursesPage = props => {
   const { handleLogout } = props;
   const activeUser = useContext(ActiveUserContext);
-  const [activeKey, setActiveKey] = useState(0);
-  const [courseId, setCourseId] = useState("");
+  const [activeKey, setActiveKey] = useState(1);
+  const [selectedCourseId, setselectedCourseId] = useState("");
+  const [courseSearchString, setCourseSearchString] = useState("");
+  const [currentPage, setCurrentPage] = useState(0);
+  const [serverData, setServerData] = useState([]);
+  const [pages, setPages] = useState(0);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const CoursesData = {
+        search: courseSearchString,
+        sorting: "courseid",
+        desc: false,
+        coursestatus: activeKey,
+        page: currentPage
+      };
+      server(activeUser, CoursesData, "SearchCourses").then(
+        res => {
+          console.log(res.data);
+          setServerData(res.data.courses);
+          setPages(res.data.pages);
+
+          if (res.data.error) {
+            alert("error in login");
+          } else {
+            // handleLogin(res.data);
+          }
+        },
+        err => {
+          console.error(err);
+        }
+      );
+    };
+    if (activeUser) {
+      fetchData();
+    }
+  }, [activeUser, currentPage, activeKey, courseSearchString]);
+
+  //
 
   if (!activeUser) {
     return <Redirect to="/" />;
   }
 
-  const courseUrl = "/courses/" + courseId;
+  const selectedCourseUrl = "/courses/" + selectedCourseId;
 
-  if (courseId) {
-    return <Redirect to={courseUrl} />;
+  if (selectedCourseId) {
+    return <Redirect to={selectedCourseUrl} />;
   }
 
   const handleSearch = searchInput => {
-    console.log(searchInput);
+    setCurrentPage(0);
+    setCourseSearchString(searchInput);
   };
 
-  const pageChange = currPage => {
-    console.log(currPage);
+  const pageChange = newCurrentPage => {
+    setCurrentPage(newCurrentPage);
   };
 
   const headers = [
-    { key: "cName", header: "שם קורס מקוצר" },
+    { key: "subname", header: "שם קורס מקוצר" },
     { key: "project", header: "פרויקט" },
-    { key: "instructor", header: "מדריך" }
-  ];
-  const data = [
-    {
-      id: "12212",
-      cName: "Frontend Developing",
-      project: "בלה בלה בלה",
-      instructor: "ניר חנס"
-    },
-    {
-      id: "12213",
-      cName: "Frontend Developing",
-      project: "בלה בלה בלה",
-      instructor: "ניר חנס"
-    },
-    {
-      id: "12214",
-      cName: "Frontend Developing",
-      project: "בלה בלה בלה",
-      instructor: "ניר חנס"
-    }
+    { key: "teachers", header: "מדריך" }
   ];
 
   const buttons = [
-    { key: 0, label: "קורסים פעילים" },
-    { key: 1, label: "לא פעילים" }
+    { key: 1, label: "קורסים פעילים" },
+    { key: 0, label: "לא פעילים" }
   ];
 
   const handleActiveBtnClick = btnClicked => {
     console.log(btnClicked);
+    setCurrentPage(0);
     setActiveKey(btnClicked.key);
   };
 
   const handleCourseSelect = courseSelected => {
-    setCourseId(courseSelected.id);
+    setselectedCourseId(courseSelected.courseid);
   };
 
   return (
@@ -76,16 +96,18 @@ const CoursesPage = props => {
       <PortalNavbar handleLogout={handleLogout} />
       <PortalSearchPager
         placeholder={"חיפוש קורס"}
-        pages={3}
-        currentPage={1}
+        pages={pages}
+        currentPage={currentPage}
         handleSearch={handleSearch}
         pageChange={pageChange}
       />
-      <PortalTable
-        headers={headers}
-        data={data}
-        handleClick={handleCourseSelect}
-      />
+      <div className="table">
+        <PortalTable
+          headers={headers}
+          data={serverData}
+          handleClick={handleCourseSelect}
+        />
+      </div>
       <PortalButtonSet
         buttons={buttons}
         handleClick={handleActiveBtnClick}

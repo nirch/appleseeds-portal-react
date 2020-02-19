@@ -21,16 +21,16 @@ import "./search.css";
 //  Used in: USERS PAGE, COURSES PAGE
 
 const PortalSearchPager = props => {
-  const { placeholder, pages, handleSearch, pageChange } = props;
+  const { placeholder, pages, handleSearch, pageChange, currentPage } = props;
   const [input, setInput] = useState("");
-  const [currPage, setCurrPage] = useState(1);
+  // const [currPage, setCurrPage] = useState(currentPage);
 
   //   Sets 50% opacity to the next/prev page buttons if the currPage is the first or the last page
   let prevPageClasses = ["prev-page"];
-  if (currPage === 1) prevPageClasses.push("disabled");
+  if (currentPage === 0) prevPageClasses.push("disabled");
 
   let nextPageClasses = ["prev-page"];
-  if (currPage === pages) nextPageClasses.push("disabled");
+  if (currentPage === pages) nextPageClasses.push("disabled");
 
   // Function that sends the input value as a callback to the parent component
   const ifEnterPressed = ev => {
@@ -42,20 +42,18 @@ const PortalSearchPager = props => {
   // Function that sends the currPage value as a callback to the parent component
   // after pressing the nex page button
   const increasePageIndicator = () => {
-    if (currPage < pages) {
-      const newCurrPage = currPage + 1;
-      setCurrPage(newCurrPage);
-      pageChange(newCurrPage);
+    if (currentPage < pages) {
+      const newCurrentPage = currentPage + 1;
+      pageChange(newCurrentPage);
     }
   };
 
   // Function that sends the currPage value as a callback to the parent component
   // after pressing the nex page button
   const decreasePageIndicator = () => {
-    if (currPage > 1) {
-      const newCurrPage = currPage - 1;
-      setCurrPage(newCurrPage);
-      pageChange(newCurrPage);
+    if (currentPage > 0) {
+      const newCurrentPage = currentPage - 1;
+      pageChange(newCurrentPage);
     }
   };
 
@@ -69,7 +67,7 @@ const PortalSearchPager = props => {
             className={prevPageClasses.join(" ")}
             onClick={decreasePageIndicator}
           />
-          <div className="currPage">{currPage}</div>
+          <div className="currPage">{currentPage + 1}</div>
           <img
             alt="Next Page"
             src="images/arrow-left.png"
