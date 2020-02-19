@@ -27,7 +27,7 @@ const PortalSearchPager = props => {
 
   //   Sets 50% opacity to the next/prev page buttons if the currPage is the first or the last page
   let prevPageClasses = ["prev-page"];
-  if (currentPage === 1) prevPageClasses.push("disabled");
+  if (currentPage === 0) prevPageClasses.push("disabled");
 
   let nextPageClasses = ["prev-page"];
   if (currentPage === pages) nextPageClasses.push("disabled");
@@ -51,7 +51,7 @@ const PortalSearchPager = props => {
   // Function that sends the currPage value as a callback to the parent component
   // after pressing the nex page button
   const decreasePageIndicator = () => {
-    if (currentPage > 1) {
+    if (currentPage > 0) {
       const newCurrentPage = currentPage - 1;
       pageChange(newCurrentPage);
     }
@@ -67,7 +67,7 @@ const PortalSearchPager = props => {
             className={prevPageClasses.join(" ")}
             onClick={decreasePageIndicator}
           />
-          <div className="currPage">{currentPage}</div>
+          <div className="currPage">{currentPage + 1}</div>
           <img
             alt="Next Page"
             src="images/arrow-left.png"
