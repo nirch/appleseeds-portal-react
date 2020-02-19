@@ -1,0 +1,150 @@
+
+.p-login{
+    background-color: rgb(27,22,110);
+    height: 100vh;
+    padding-left: 0px;
+    padding-right: 0px;
+    
+}
+.p-login > img{
+    width:100%;
+   padding: 10% 16%;
+    margin:auto;
+    display:block;
+   
+    
+}
+
+.p-login > Form{
+    width:100%;
+}
+.p-login  Form Form.Control{
+    width:50%;
+}
+.p-login >form> .loginbutton{
+    
+    width: 86%;
+   
+    height:8%;
+    margin:auto;
+    margin-top: 21%;
+    
+}
+.p-login >form> .loginbutton> input{
+    text-align: center;
+    font-size: 24px;
+    width:100%;
+    background-color: rgb(27,22,110);
+    border:1px white solid;
+   /* height:100%; */
+    border-radius: 30px;
+    color: white;
+    direction: ltr;
+    height: 50px;
+    
+    
+
+}
+.p-login >form> .loginbutton> input:focus{
+    outline: none;
+}
+.p-login >form> .loginbutton:nth-child(2){
+    margin-top: 10%;
+    
+}
+
+.p-login > form>.loginbutton:nth-child(3){
+    margin-top: 33%;
+    height:10%;
+    border-radius: 30px;
+}
+
+.p-login > form>.loginbutton > button{
+    width:100%;
+    height: 80%;
+    border-radius: 30px;
+    color:rgb(27,22,110);
+    font-size: 30px;
+    font-weight: bold;
+    font-family: assistant-regular;
+    border: none;
+   
+    
+
+}
+.p-login > form>.loginbutton > button:focus{
+    outline: none;
+
+}
+
+.p-login > form>.loginbutton> input::-webkit-input-placeholder {
+	color: inherit;
+}
+
+.p-login > form>.loginbutton> input::-moz-placeholder {
+	color: inherit;
+	opacity: 1;
+}
+
+.p-login > form>.loginbutton> input:-ms-input-placeholder {  
+	color: inherit;
+}
+ /*
+.p-login >.errorlogin {
+    background-color: white;
+    width:100%;
+    height: 14%;
+  
+   position: fixed;
+    right: 0px;
+    bottom: 0px; 
+ animation-name: error;
+  animation-duration: 0.5s;  
+  
+  animation-fill-mode: backwards; 
+}*/
+/*
+@keyframes error {
+    from {bottom: -14%;}
+    to {bottom: -0%; }
+  } */
+/*
+.p-login > .errorlogin >img{
+    margin-top:8%;
+    margin-right:24px;
+}
+.p-login > .errorlogin > p{
+    color:#ffa1a1;
+    font-size: 20px;
+    line-height: 18px;
+   float: left;
+   margin-left: 170px;
+   margin-top: 10%;
+
+}
+.p-login > .errorlogin > a{
+    height:20%;
+    width:20%;
+    font-size: 30px;
+    color:#5d5d5d;
+  
+    position: absolute;
+    bottom: 65%;
+    left: -8%;
+
+}
+*/
+.p-login> .errorhide{
+    display: none;
+}
+.p-login > .text-center{
+    margin-top:9%!important;
+}
+.p-login > .text-center > a{
+    color: white;
+    font-size: 22px;
+   
+   
+    
+}
+

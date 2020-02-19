@@ -1,0 +1,20 @@
+
+/* .p-hours-approve-page{
+    color: red;
+} */
+
+.p-hours-approve-page .page-header{
+    font-size: 0.83em;
+    color: #5d5d5d;
+    text-align: center;
+}
+
+.p-hours-approve-page .c-search{
+    padding: 22px 12px ;
+}
+
+.p-hours-approve-page .c-day-month-picker{
+    padding: 15px 0 25px 0;
+    border-bottom: 2px solid rgb(224,224,224);
+    box-shadow: 0px 3px 6px 0px #29000000;
+}

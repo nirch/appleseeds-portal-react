@@ -21,16 +21,16 @@ import "./search.css";
 //  Used in: USERS PAGE, COURSES PAGE
 
 const PortalSearchPager = props => {
-  const { placeholder, pages, handleSearch, pageChange } = props;
+  const { placeholder, pages, handleSearch, pageChange, currentPage } = props;
   const [input, setInput] = useState("");
-  const [currPage, setCurrPage] = useState(1);
+  // const [currPage, setCurrPage] = useState(currentPage);
 
   //   Sets 50% opacity to the next/prev page buttons if the currPage is the first or the last page
   let prevPageClasses = ["prev-page"];
-  if (currPage === 1) prevPageClasses.push("disabled");
+  if (currentPage === 1) prevPageClasses.push("disabled");
 
   let nextPageClasses = ["prev-page"];
-  if (currPage === pages) nextPageClasses.push("disabled");
+  if (currentPage === pages) nextPageClasses.push("disabled");
 
   // Function that sends the input value as a callback to the parent component
   const ifEnterPressed = ev => {
@@ -42,20 +42,18 @@ const PortalSearchPager = props => {
   // Function that sends the currPage value as a callback to the parent component
   // after pressing the nex page button
   const increasePageIndicator = () => {
-    if (currPage < pages) {
-      const newCurrPage = currPage + 1;
-      setCurrPage(newCurrPage);
-      pageChange(newCurrPage);
+    if (currentPage < pages) {
+      const newCurrentPage = currentPage + 1;
+      pageChange(newCurrentPage);
     }
   };
 
   // Function that sends the currPage value as a callback to the parent component
   // after pressing the nex page button
   const decreasePageIndicator = () => {
-    if (currPage > 1) {
-      const newCurrPage = currPage - 1;
-      setCurrPage(newCurrPage);
-      pageChange(newCurrPage);
+    if (currentPage > 1) {
+      const newCurrentPage = currentPage - 1;
+      pageChange(newCurrentPage);
     }
   };
 
@@ -63,19 +61,19 @@ const PortalSearchPager = props => {
     pages && pages > 1 ? (
       <div className="absolute">
         <div className="page-indicator">
-          <div
+          <img
+            alt="Previous Page"
+            src="images/arrow-right.png"
             className={prevPageClasses.join(" ")}
             onClick={decreasePageIndicator}
-          >
-            <img alt="Previous Page" src="images/arrow-right.png" />{" "}
-          </div>
-          <div>{currPage}</div>
-          <div
+          />
+          <div className="currPage">{currentPage}</div>
+          <img
+            alt="Next Page"
+            src="images/arrow-left.png"
             className={nextPageClasses.join(" ")}
             onClick={increasePageIndicator}
-          >
-            <img alt="Next Page" src="images/arrow-left.png" />
-          </div>
+          />
         </div>
       </div>
     ) : null;
@@ -90,7 +88,7 @@ const PortalSearchPager = props => {
           placeholder={placeholder}
           onChange={ev => setInput(ev.target.value)}
           onKeyDown={ev => ifEnterPressed(ev)}
-          autoFocus
+          // autoFocus
         />
         {pageIndicator}
       </div>
