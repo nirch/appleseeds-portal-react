@@ -38,10 +38,8 @@ const App = () => {
         <Route path="/courses/:id">
           <CourseDetailsPage handleLogout={handleLogout}/>
         </Route>
-        <Route exact path="/users/:userType" render={ props => <UsersPage {...props}/>}/>
-        <Route path="/users" render={ props => <UsersPage {...props}/>}/>
-        <Route path="/users/:id">
-          <UserDetailsPage handleLogout={handleLogout}/>
+        <Route exact path="/users" render={ props => <UsersPage {...props}/>}/>
+        <Route path="/users/:id" render={ props => <UserDetailsPage {...props} handleLogout={handleLogout}/>}>
         </Route>
         <Route path="/hours-report">
           <HoursReportPage handleLogout={handleLogout}/>
