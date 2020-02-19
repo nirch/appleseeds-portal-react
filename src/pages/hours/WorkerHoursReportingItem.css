@@ -1,0 +1,41 @@
+
+.c-worker-hours-reporting-item
+{
+    direction: rtl;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color:#5d5d5d;
+}
+.c-worker-hours-reporting-item img.open{
+    text-align: left;
+}
+
+.c-worker-hours-reporting-item .worker-params{
+    display:inline-block
+}
+
+.c-worker-hours-reporting-item div.d-inline-block{
+    width: 35px;
+}
+
+.c-worker-hours-reporting-item img{
+    margin-right: 30px ;
+}
+
+.c-worker-hours-reporting-item .hours-approved
+{
+    color:#a1d47f;
+}
+.c-worker-hours-reporting-item .hours-rejected
+{
+    color:#ffa1a1;
+}
+.c-worker-hours-reporting-item .hours-pending
+{
+    color: #f5cc0c;
+}
+
+
+
+
