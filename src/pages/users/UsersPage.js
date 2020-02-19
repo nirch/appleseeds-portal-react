@@ -39,8 +39,8 @@ const UsersPage = (props) => {
                     console.error(err);
                 });
             };
-            fetchData().then(() => console.log('found data')).catch( err => console.log(err));
-        }, [userStatus,pageNum,searchString]);
+            fetchData().then(() => console.log('found data')).catch(err => console.log(err));
+        }, [userStatus, pageNum, searchString]);
 
     if (!activeUser) {
         return <Redirect to='/'/>
@@ -67,13 +67,18 @@ const UsersPage = (props) => {
 
     // let num = data;
     // debugger
-    if (!data.users && pageNum >= 0){
+    if (!data.users && pageNum >= 0) {
         //hack -- need to verify implementation
         return <div></div>
     }
 
     const clickOnRow = (e) => {
-        props.history.push(`/users/${e.userid}`);
+
+
+        props.history.push({
+            pathname: `/users/${e.userid}`,
+            state: {userid: e.userid}
+        });
     };
 
 
