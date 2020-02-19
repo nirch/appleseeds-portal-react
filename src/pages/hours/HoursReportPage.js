@@ -3,6 +3,9 @@ import './hours.css'
 import PortalNavbar from '../../components/navbar/PortalNavbar';
 import ActiveUserContext from '../../shared/activeUserContext'
 import { Redirect } from 'react-router-dom'
+import HoursReportTable from '../../components/hours/HoursReportTable'
+import jsonReports from './Reports.json';
+
 
 const HoursReportPage = (props) => {
     const { handleLogout } = props;
@@ -12,10 +15,12 @@ const HoursReportPage = (props) => {
         return <Redirect to='/' />
     }
 
+    let reports =jsonReports;
+
     return (
         <div>
             <PortalNavbar handleLogout={handleLogout}/>
-            <h1>דיווח שעות</h1>
+            <HoursReportTable reports={reports}/>
         </div>
     );
 }
