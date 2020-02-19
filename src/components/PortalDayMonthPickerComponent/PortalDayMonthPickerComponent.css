@@ -9,5 +9,6 @@
 .c-day-month-picker .date-text{
     user-select: none;
     width:200px;
+    text-align: center;
     
 }
