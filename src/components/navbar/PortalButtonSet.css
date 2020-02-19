@@ -1,0 +1,28 @@
+.c-portalButtonSet {
+    margin: auto;
+    box-shadow: 1px -2px 8px 0px rgba(0,0,0,0.75);
+    
+
+}
+
+.c-portalButtonSet .c-buttonCol {
+    justify-content: center;
+    align-items: center;
+    text-align: center !important;
+}
+
+.c-buttonCol .btn   {
+    height: 76px;
+    color: #5d5d5d;
+}
+
+.c-buttonCol .btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.c-buttonCol > .active   {
+    font-weight: bold;
+    color: #1b166e;
+
+}
