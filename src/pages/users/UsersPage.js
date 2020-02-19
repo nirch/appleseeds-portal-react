@@ -47,20 +47,17 @@ const UsersPage = (props) => {
     }
 
     const handleSearch = (searchString) => {
-        console.debug('search string '+searchString);
         setSearchString(searchString);
         setPageNum(0);
     };
 
     const handleUserType = (item) => {
-        console.debug('i am hunduru ro event ' + item.key);
         setUserStatus(item.key);
         setPageNum(0);
         setSearchString("");
     };
 
     const callPageData = (index) => {
-        console.debug('go to page '+index);
         setPageNum(index);
     };
 
@@ -76,9 +73,7 @@ const UsersPage = (props) => {
     }
 
     const clickOnRow = (e) => {
-        console.debug(e);
-        debugger
-        return <Redirect to={`/users/:${e.userid}`}/>
+        props.history.push(`/users/${e.userid}`);
     };
 
 

@@ -38,7 +38,7 @@ const App = () => {
         <Route path="/courses/:id">
           <CourseDetailsPage handleLogout={handleLogout}/>
         </Route>
-        <Route path="/users" render={ props => <UsersPage {...props}/>}/>
+        <Route exact path="/users" render={ props => <UsersPage {...props}/>}/>
         <Route path="/users/:id">
           <UserDetailsPage handleLogout={handleLogout}/>
         </Route>
