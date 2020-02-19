@@ -1,13 +1,15 @@
 .c-portalButtonSet {
-     border: solid gray 1px;
-     margin: auto;
+    margin: auto;
+    background-color: white;
+    box-shadow: 1px -2px 8px 0px rgba(0,0,0,0.75);
+    
+
 }
 
 .c-portalButtonSet .c-buttonCol {
     justify-content: center;
     align-items: center;
     text-align: center !important;
-    box-shadow: 0px -15px 6px -8px rgba(158,158,158,0.7);
 }
 
 .c-buttonCol .btn   {
