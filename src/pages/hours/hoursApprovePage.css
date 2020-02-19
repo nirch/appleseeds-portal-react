@@ -1,7 +1,8 @@
-
-/* .p-hours-approve-page{
-    color: red;
-} */
+:root{
+    --hours-approved:#a1d47f;
+    --hours-rejected:#ffa1a1;
+    --hours-pending:#f5cc0c;
+}
 
 .p-hours-approve-page .page-header{
     font-size: 0.83em;
