@@ -7,42 +7,44 @@ import PortalTable from "../../components/TableComponent/PortalTable";
 import PortalSearchPager from '../../components/search/PortalSearchPager'
 import PortalButtonSet from '../../components/navbar/PortalButtonSet'
 import server from '../../shared/server'
+import {getApiName, getHeaders} from '../../utils/utils'
 
 const UsersPage = (props) => {
-    const {handleLogout, } = props;
+    const {handleLogout} = props;
+
+    const apiName = getApiName(props.match.params.userType);
+
+    // debugger
     const activeUser = useContext(ActiveUserContext);
 
     const [data, setData] = useState([]);
-    const [searchStr, setSearchStr] = useState('');
 
+    const [pageNum, setPageNum] = useState(0);
 
-    const [headers, setHeaders] = useState([{key: "userid", header: "מס' מזהה"}, {
-        key: "firstname",
-        header: "שם פרטי"
-    }, {
-        key: "lastname",
-        header: "שם משפחה"
-    }, {key: 'email', header: 'דוא"ל'}]);
+    const [headers, setHeaders] = useState(getHeaders());
+
+    const [userStatus, setUserStatus] = useState();
+
 
     //inner functions
     //fetch data from db
-    let payload = {"search": "", "sorting": "userid", "desc": false, "userstatus": 1, "page": -1};
-
-    useEffect(() => {
-        const fetchData = async () => {
-            let ans = await server(activeUser, payload, "SearchStaffUnderMe").then(res => {
-                console.log(res);
-                if (res.data.error) {
-                    alert("error in login");
-                } else {
-                    setData(res.data);
-                }
-            }, err => {
-                console.error(err);
-            });
-        };
-        fetchData();
-    }, []);
+    //TODO
+    useEffect(
+        () => {
+            const fetchData = async () => {
+                await server(activeUser, createPayload(pageNum), apiName).then(res => {
+                    console.log(res);
+                    if (res.data.error) {
+                        alert("error in login");
+                    } else {
+                        setData(res.data);
+                    }
+                }, err => {
+                    console.error(err);
+                });
+            };
+            fetchData().then(() => console.log('found data')).catch( err => console.log(err));
+        }, []);
 
     if (!activeUser) {
         return <Redirect to='/'/>
@@ -51,7 +53,6 @@ const UsersPage = (props) => {
     const handleSearch = (searchText) => {
         if (searchText) {
             let newData = data.filter(item => {
-
                 return (item.firstname.toLowerCase().includes(searchText) ||
                     item.lastname.toLowerCase().includes(searchText) ||
                     item.email.toLowerCase().includes(searchText));
@@ -67,20 +68,29 @@ const UsersPage = (props) => {
     };
 
     const callPageData = (index) => {
-        console.log('page index ' + index);
+        setPageNum(index);
     };
 
-    const numOfPages = (data.length % 10 + 1);
+    const createPayload = () => {
+        return {"search": "", "sorting": "userid", "desc": false, "userstatus": 1, "page": pageNum};
+    };
+
+    let num = data;
+    if (!data.users){
+        //hack -- need to verify implementation
+        return <div></div>
+    }
+    debugger
     return (
         <div>
             <PortalNavbar handleLogout={handleLogout}/>
             <h1>משתמשים</h1>
-            <PortalSearchPager placeholder='חיפוש משתמש' handleSearch={(e) => handleSearch(e)} pages={numOfPages}
+            <PortalSearchPager placeholder='חיפוש משתמש' handleSearch={(e) => handleSearch(e)} pages={data.pages}
                                pageChange={(index) => callPageData(index)}>search
                 bar</PortalSearchPager>
-            <PortalTable headers={headers} data={data} handleClick={(e) => console.log(e.target)}>blah</PortalTable>
+            <PortalTable headers={headers} data={data.users} handleClick={(e) => console.log(e.target)}>blah</PortalTable>
             <PortalButtonSet buttons={[{key: 0, label: 'פעילים'}, {key: 1, label: 'לא פעילים'}]}
-                             handleClick={(item) => handleUserType(item)} activeKey={'0'}>blea</PortalButtonSet>
+                             handleClick={(item) => handleUserType(item)} activeKey={'0'}>blah</PortalButtonSet>
         </div>
     );
 };
