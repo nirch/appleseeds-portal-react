@@ -12,19 +12,19 @@ import ActiveUserContext from '../../shared/activeUserContext'
 //3. The function "setTextError" is bollean and use for display or hide the window
 
 const ShowAlert = (props) => {
-    const { type, p_Text, setTextError } = props;
-    const colorstyle = type === "error" ? { color: "#ffa1a1" } : { color: "blue" };
-    const imgsrc = type === "error" ? "drawable-hdpi/noun_error_1156903.png" : null
+    const { type, p_Text, handleClose } = props;
+    const colorstyle = type === "error" ? { color: "#ffa1a1" } : { color: "rgb(37,183,211)" };
+    const imgsrc = type === "error" ? "drawable-hdpi/noun_error_1156903.png" : "drawable-hdpi/icons8-info-39.png"
     return (
         <div className="c_showalert">
             <div>
                 <div>
-                    <img src={imgsrc} width="39px" />
+                    <img src={imgsrc} />
                 </div>
 
                 <p style={colorstyle}>{p_Text}</p>
             </div>
-            <a onClick={() => setTextError("")}>&times;</a>
+            <a onClick={handleClose}>&times;</a>
 
         </div>
     );

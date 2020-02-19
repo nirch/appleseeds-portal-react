@@ -14,8 +14,12 @@ const LoginPage = (props) => {
     const activeUser = useContext(ActiveUserContext);
     const type = "error";
 
+    const handleClose = () => {
+        setTextError("");
 
-    const login = () => {
+    }
+
+    const login = (e) => {
 
         if (!email || !pwd) {
 
@@ -69,22 +73,24 @@ const LoginPage = (props) => {
         <Container className="p-login">
             <img src="drawable-hdpi/01.png" />
 
-            <div className="loginbutton">
+            <form onSubmit={login} noValidate>
+                <div className="loginbutton">
 
-                <input value={email} type="email" placeholder="אימייל" onChange={e => setEmailCleanError(e)} />
-            </div>
-            <div className="loginbutton">
+                    <input value={email} type="email" placeholder="אימייל" onChange={e => setEmailCleanError(e)} />
+                </div>
+                <div className="loginbutton">
 
-                <input value={pwd} placeholder="סיסמא" type="password" placeholder="סיסמה" onChange={e => setPassCleanError(e)} >
-                </input>
-            </div>
-            <div className="loginbutton">
-                <button type="button" onClick={login}>התחברות</button>
+                    <input value={pwd} placeholder="סיסמא" type="password" placeholder="סיסמה" onChange={e => setPassCleanError(e)} >
+                    </input>
+                </div>
+                <div className="loginbutton">
+                    <button type="submit">התחברות</button>
 
 
-            </div>
+                </div>
+            </form>
             <div className={showerror}>
-                <ShowAlert type={type} p_Text={textError} setTextError={setTextError} />
+                <ShowAlert type={type} p_Text={textError} handleClose={handleClose} />
             </div>
 
         </Container >

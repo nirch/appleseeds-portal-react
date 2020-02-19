@@ -21,7 +21,7 @@
 .p-login  Form Form.Control{
     width:50%;
 }
-.p-login > .loginbutton{
+.p-login >form> .loginbutton{
     
     width: 86%;
    
@@ -30,35 +30,36 @@
     margin-top: 21%;
     
 }
-.p-login > .loginbutton> input{
+.p-login >form> .loginbutton> input{
     text-align: center;
     font-size: 24px;
     width:100%;
     background-color: rgb(27,22,110);
     border:1px white solid;
-    height:100%;
+   /* height:100%; */
     border-radius: 30px;
     color: white;
     direction: ltr;
+    height: 50px;
     
     
 
 }
-.p-login > .loginbutton> input:focus{
+.p-login >form> .loginbutton> input:focus{
     outline: none;
 }
-.p-login > .loginbutton:nth-child(3){
+.p-login >form> .loginbutton:nth-child(2){
     margin-top: 10%;
     
 }
 
-.p-login > .loginbutton:nth-child(4){
+.p-login > form>.loginbutton:nth-child(3){
     margin-top: 33%;
     height:10%;
     border-radius: 30px;
 }
 
-.p-login > .loginbutton > button{
+.p-login > form>.loginbutton > button{
     width:100%;
     height: 80%;
     border-radius: 30px;
@@ -71,40 +72,42 @@
     
 
 }
-.p-login > .loginbutton > button:focus{
+.p-login > form>.loginbutton > button:focus{
     outline: none;
 
 }
 
-.p-login > .loginbutton> input::-webkit-input-placeholder {
+.p-login > form>.loginbutton> input::-webkit-input-placeholder {
 	color: inherit;
 }
 
-.p-login > .loginbutton> input::-moz-placeholder {
+.p-login > form>.loginbutton> input::-moz-placeholder {
 	color: inherit;
 	opacity: 1;
 }
 
-.p-login > .loginbutton> input:-ms-input-placeholder {  
+.p-login > form>.loginbutton> input:-ms-input-placeholder {  
 	color: inherit;
 }
-.errorlogin {
+ /*
+.p-login >.errorlogin {
     background-color: white;
     width:100%;
     height: 14%;
-  /*  margin-top:1%; */
-    position: fixed;
+  
+   position: fixed;
     right: 0px;
     bottom: 0px; 
  animation-name: error;
   animation-duration: 0.5s;  
   
-  animation-fill-mode: backwards;
-}
+  animation-fill-mode: backwards; 
+}*/
+/*
 @keyframes error {
     from {bottom: -14%;}
     to {bottom: -0%; }
-  }
+  } */
 /*
 .p-login > .errorlogin >img{
     margin-top:8%;
@@ -131,7 +134,7 @@
 
 }
 */
-.errorhide{
+.p-login> .errorhide{
     display: none;
 }
 .p-login > .text-center{
