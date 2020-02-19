@@ -11,10 +11,10 @@ import server from "../../shared/server";
 const CoursesPage = props => {
   const { handleLogout } = props;
   const activeUser = useContext(ActiveUserContext);
-  const [activeKey, setActiveKey] = useState(0);
+  const [activeKey, setActiveKey] = useState(1);
   const [selectedCourseId, setselectedCourseId] = useState("");
   const [courseSearchString, setCourseSearchString] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const [serverData, setServerData] = useState([]);
   const [pages, setPages] = useState(0);
 
@@ -62,7 +62,7 @@ const CoursesPage = props => {
   }
 
   const handleSearch = searchInput => {
-    setCurrentPage(1);
+    setCurrentPage(0);
     setCourseSearchString(searchInput);
   };
 
@@ -77,17 +77,18 @@ const CoursesPage = props => {
   ];
 
   const buttons = [
-    { key: 0, label: "קורסים פעילים" },
-    { key: 1, label: "לא פעילים" }
+    { key: 1, label: "קורסים פעילים" },
+    { key: 0, label: "לא פעילים" }
   ];
 
   const handleActiveBtnClick = btnClicked => {
     console.log(btnClicked);
+    setCurrentPage(0);
     setActiveKey(btnClicked.key);
   };
 
   const handleCourseSelect = courseSelected => {
-    setselectedCourseId(courseSelected.id);
+    setselectedCourseId(courseSelected.courseid);
   };
 
   return (
@@ -100,11 +101,13 @@ const CoursesPage = props => {
         handleSearch={handleSearch}
         pageChange={pageChange}
       />
-      <PortalTable
-        headers={headers}
-        data={serverData}
-        handleClick={handleCourseSelect}
-      />
+      <div className="table">
+        <PortalTable
+          headers={headers}
+          data={serverData}
+          handleClick={handleCourseSelect}
+        />
+      </div>
       <PortalButtonSet
         buttons={buttons}
         handleClick={handleActiveBtnClick}

@@ -4,7 +4,6 @@ function getApiName(userType) {
         'newUsers': 'SearchNewUsers',
         'students': 'SearchStudentsUnderMe'
     };
-    debugger
     return mappedApi[userType] == null ? mappedApi['staff'] : mappedApi[userType];
 }
 
