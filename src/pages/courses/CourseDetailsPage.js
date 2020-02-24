@@ -10,19 +10,19 @@ const CourseDetailsPage = (props) => {
     const activeUser = useContext(ActiveUserContext);
     const tabsObj = [{
         header: "קורס",
-        view: <p>I'm profile page</p>
+        view: <p>I'm course page</p>
     },
     {
         header: "סילבוס",
-        view: <p>I'm courses page</p>
+        view: <p>I'm sylabus page</p>
     },
     {
         header: "סטודנטים",
-        view: <p>I'm employees page</p>
+        view: <p>I'm students page</p>
     },
     {
         header: "מדריכים",
-        view: <p>I'm report page</p>
+        view: <p>I'm instructers page</p>
     }];
 
 
