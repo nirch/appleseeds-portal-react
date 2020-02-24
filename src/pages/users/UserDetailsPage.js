@@ -33,22 +33,9 @@ const UserDetailsPage = (props) => {
     return (
         <div>
             <PortalNavbar handleLogout={handleLogout} />
-            {/* <h1>עובדים</h1> */}
-            {/* <div>{userid}</div> */}
             <div>
-<<<<<<< HEAD
                 <PortalInput inputTitle={'test'} inputValue={'input'}/>
-=======
                 <PortalTabView tabsObj={tabsObj} />
-
-                {/* <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput>
-                <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput>
-                <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput>
-                <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput>
-                <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput>
-                <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput>
-                <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput> */}
->>>>>>> 3404f15482bb965dc1e36110af2e9fb1626f1b17
             </div>
         </div>
     );
