@@ -42,7 +42,7 @@
     color: #333;
     font-weight: 600;
 }
-.c_portalTabView > section > .tab-content {
+.c_portalTabView > section > .tab-content p{
       margin:10px auto;
     width: 50%;
     text-align: center;
