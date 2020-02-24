@@ -6,7 +6,8 @@ import HoursReport from './HoursReport';
 const HoursReportTable = (props) => {
     // Declare a new state variable, which we'll call "count"
     // const [count, setCount] = useState(0);
-    const [reports, setReports] = useState(props.reports);
+    // const [reports, setReports] = useState(props.reports);
+    const { reports } = props;
     
     // <p>You clicked {count}times</p>
     // <button onClick={() => setCount(count + 1)}>
