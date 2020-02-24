@@ -19,13 +19,7 @@ const UserDetailsPage = (props) => {
             <h1>פרטי משתמש</h1>
             <div>{userid}</div>
             <div>
-                <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput>
-                <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput>
-                <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput>
-                <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput>
-                <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput>
-                <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput>
-                <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput>
+                <PortalInput inputTitle={'test'} inputValue={'input'}/>
             </div>
         </div>
     );

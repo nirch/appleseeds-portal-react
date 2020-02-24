@@ -77,7 +77,6 @@ const UsersPage = (props) => {
     return (
         <div>
             <PortalNavbar handleLogout={handleLogout}/>
-            <h1>משתמשים</h1>
             <PortalSearchPager placeholder='חיפוש משתמש' handleSearch={(e) => handleSearch(e)} pages={data.pages}
                                pageChange={(index) => callPageData(index)} currentPage={pageNum}/>
             <PortalTable headers={headers} data={data.users} handleClick={(e) => clickOnRow(e)}>blah</PortalTable>
