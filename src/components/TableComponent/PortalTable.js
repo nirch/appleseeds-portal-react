@@ -11,6 +11,11 @@ export default class PortalTable extends Component {
         //data - array of all the row's data, not only what's in the specific header
         //handleClick - calling the function that handles a click on a row
         const { headers, data ,handleClick} = this.props;
+
+        if (!headers || !data) {
+            return null;
+        }
+
         let headerRow = [];
         for(let i=0 ; i<headers.length ; i++){
             headerRow.push(<th key={i}>{headers[i].header}</th>);
