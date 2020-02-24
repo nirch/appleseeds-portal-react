@@ -18,4 +18,9 @@ function getHeaders() {
     }, {key: 'email', header: 'דוא"ל'}]
 }
 
+function getUserDetailsProfileAPIs() {
+    return ['GetManagedUsersByUserId','GetUserProjects']
+}
+
+
 export {getApiName,getHeaders};

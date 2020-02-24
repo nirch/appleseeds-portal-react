@@ -13,7 +13,7 @@ import './hoursApprovePage.css'
 const HoursApprovePage = (props) => {
     const { handleLogout } = props;
     const activeUser = useContext(ActiveUserContext);
-
+    
     if (!activeUser) {
         return <Redirect to='/' />
     }
@@ -41,7 +41,9 @@ const HoursApprovePage = (props) => {
                     <WorkerHoursReportingItem ></WorkerHoursReportingItem>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="1">
-                    <Card.Body>Hello! I'm another body</Card.Body>
+                    <Card.Body>
+                        <ReportedHoursDetailsItem></ReportedHoursDetailsItem>
+                    </Card.Body>
                     </Accordion.Collapse>
                 </Card>
             </Accordion>
