@@ -9,19 +9,19 @@ const CourseDetailsPage = (props) => {
     const { handleLogout } = props;
     const activeUser = useContext(ActiveUserContext);
     const tabsObj = [{
-        header: "פרופיל",
+        header: "קורס",
         view: <p>I'm profile page</p>
     },
     {
-        header: "קורסים",
+        header: "סילבוס",
         view: <p>I'm courses page</p>
     },
     {
-        header: "עובדים",
+        header: "סטודנטים",
         view: <p>I'm employees page</p>
     },
     {
-        header: "דיווח",
+        header: "מדריכים",
         view: <p>I'm report page</p>
     }];
 
