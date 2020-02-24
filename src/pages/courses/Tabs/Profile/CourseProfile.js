@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PortalInput from "../../../../components/PortalInput";
 import PortalInputSelect from "../../../../components/PortalInputSelect/PortalInputSelect";
 import { Container, Row, Col } from "react-bootstrap";
 import "./CourseProfile.css";
-
+import server from "../../../../shared/server";
+import ActiveUserContext from "../../../../shared/activeUserContext";
 const CourseProfile = (props) => {
     
     const {courseId} = props;
@@ -13,27 +14,39 @@ const CourseProfile = (props) => {
     const [arabShortName, setarabShortName] = useState("");
     const [project, setProject] = useState([]);
     const [tags, setTags] = useState("");
-    const [city, setCity] = useState([]);
+    const [city, setCity] = useState("");
+    const [cityList, setCityList] = useState([]);
     const [budgetYear, setBudgetYear] = useState([]);
     const [instructer, setInstructer] = useState("");
+    const activeUser = useContext(ActiveUserContext);
 
-    //... state for each input
-
-    /*const [, ] = useState("");*/
     function emptyFunc() {
     }
 
     useEffect(() => {
         // read data from server using courseId and updates all the fields
-        setCourseName("טסט1");
-        setHebrewShortName("טסט1");
-        setarabShortName("טסט1");
-        setProject([{key : "0", value: "blue"} , {key: "1", value: "red"}]);
-        setTags("טסט1");
-        setCity([{key : "0", value: "blue"} , {key: "1", value: "red"}]);
-        setBudgetYear([{key : "0", value: "blue"} , {key: "1", value: "red"}]);
-        setInstructer("טסט1");
-
+        server(activeUser, {courseid: courseId}, "GetCourseById").then(res => {
+            console.log(res);
+            setCourseName(res.data.name);
+            setHebrewShortName(res.data.subname);
+            setarabShortName(res.data.subnameinarabic);
+            setProject([{key : "0", value: "כחול", label:"כחול"} , {key: "1", value: "אדום", label:"אדום"}]);
+            setTags("טעגס");
+            setCity(res.data.cityid);
+            setBudgetYear([{key : "0", value: "כחול", label:"כחול"} , {key: "1", value: "אדום", label:"אדום"}]);
+            setInstructer(res.data.primaryTeacherName);
+        })
+        server(activeUser, {}, "GetCities").then(res => {
+            console.log(res);
+            let x=[];
+            res.data.forEach(city => {
+                const y = {key: city.cityid, value: city.name, label: city.name}
+                x.push(y);
+            })
+            setCityList(x);
+            
+        })
+ 
     }, [])
 
     return (
@@ -63,7 +76,7 @@ const CourseProfile = (props) => {
             </Row>
             <Row>
                 <Col>
-                    <PortalInputSelect inputTitle="עיר" options={city} optionsKey="0" handleSelection={() => emptyFunc()}/>
+                    <PortalInputSelect inputTitle="עיר" options={cityList} optionsKey={city} handleSelection={() => emptyFunc()}/>
                 </Col>
                 <Col>
                     <PortalInputSelect inputTitle="שנת תקציב" options={budgetYear} optionsKey="0" handleSelection={() => emptyFunc()}/>
