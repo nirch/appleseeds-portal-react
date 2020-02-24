@@ -9,8 +9,7 @@ import "../components/PortalInput.css";
 //  - handleChange () - callback from Parent page/component
 
  const PortalInput = (props) => {
-  const {inputTitle, inputPlaceholder, input, handleChange} = props;
-  const [inputValue, setInputValue] = useState(input);
+  const {inputTitle, inputPlaceholder, inputValue, handleChange} = props;
 
   return (
     <div className="c-portal-input">
@@ -20,7 +19,6 @@ import "../components/PortalInput.css";
         value={inputValue}
         placeholder={inputPlaceholder}
         onChange={event => {
-          setInputValue(event.target.value);
           handleChange(event.target.value);
         }}
       />
