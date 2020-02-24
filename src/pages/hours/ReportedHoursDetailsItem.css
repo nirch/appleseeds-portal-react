@@ -6,6 +6,7 @@
     text-align: left;
     display: flex;
     flex-direction: row-reverse;
+    padding: 0px 15px ;
        
 }
 
@@ -86,6 +87,56 @@
 .c-reported-hours-details-item .radio-action input[type=radio]:not(old):checked + label > div.radio.rejected{
     border-color: var(--hours-rejected);
 }
+
+.c-reported-hours-details-item .data.rejected
+{
+    background: var(--hours-rejected);
+}
+
+.c-reported-hours-details-item .data.approved
+{
+    background: var(--hours-approved);
+}
+
+.c-reported-hours-details-item .data.pending
+{
+    background: var(--hours-pending);
+}
+
+
+.c-reported-hours-details-item .data .header-data
+{
+    display:flex;
+}
+.c-reported-hours-details-item .data .header-data label
+{
+    padding: 0 20px;
+    vertical-align: middle;
+}
+
+.c-reported-hours-details-item .data .header-data .checkbox-div
+{
+    padding: 5px;
+} 
+
+.c-reported-hours-details-item .data .content-data
+{
+    display:flex;
+    text-align: center;
+    padding:15px ;
+}
+
+
+
+.c-reported-hours-details-item .data .bold
+{
+    font-weight: bold;
+}
+.c-reported-hours-details-item .data .regular
+{
+    font-weight: normal;
+}
+
 
 
 
