@@ -25,14 +25,14 @@ const CourseProfile = (props) => {
 
     useEffect(() => {
         // read data from server using courseId and updates all the fields
-        setCourseName("Test 1");
-        setHebrewShortName("Test 1");
-        setarabShortName("Test 1");
+        setCourseName("טסט1");
+        setHebrewShortName("טסט1");
+        setarabShortName("טסט1");
         setProject([{key : "0", value: "blue"} , {key: "1", value: "red"}]);
-        setTags("Test 1");
+        setTags("טסט1");
         setCity([{key : "0", value: "blue"} , {key: "1", value: "red"}]);
         setBudgetYear([{key : "0", value: "blue"} , {key: "1", value: "red"}]);
-        setInstructer("Test 1");
+        setInstructer("טסט1");
 
     }, [])
 
