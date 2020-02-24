@@ -1,9 +1,7 @@
 /** @format */
 
-import React from "react";
-import "../components/PortalInputSelect.css";
-
-import React from "react";
+import React, { useState } from "react";
+import "../PortalInputSelect/PortalInputSelect.css";
 
 // <PortalInputSelect /> props:
 //  - inputTitle (String) - will be rendering the Title Lable  - *not Required  | e.g.- "gender"
@@ -12,23 +10,27 @@ import React from "react";
 //  - handleSelection( ) - callback function. sends the object of the selected option. 
 
 const PortalInputSelect = props => {
-  const { inputTitle, options, optionsKey } = props;
+  const { inputTitle, options, optionsKey, handleSelection} = props;
   const [inputSelectValue, setInputSelectValue] = useState(optionsKey);
 
 // mapping the options arr[] to JSX options elements for rendering 
   const selectInputOptions = options.map(item => {
-    <option key={item.key} value={item.key}>{item.label}</option>
+    return(<option key={item.key} value={item.key}>{item.label}</option>)
   });
-
+  let labelOn =  <span></span>
+  if(inputTitle){
+    labelOn = <label className="c-portal-input-select-label">{inputTitle}</label>
+  }
   return (
     <div className="c-portal-input-select">
-      <label className="c-portal-input-select-label">{inputTitle}</label>
+      {labelOn}
       <select
         className="c-portal-input-select-element"
         value={inputSelectValue}
         onChange={event => {
           setInputSelectValue(event.target.value);
-          handleChange(event.target.value);
+          // console.log(event.target.value);
+          handleSelection(options.find(option => option.key === event.target.value));
         }}
       >
         {selectInputOptions}

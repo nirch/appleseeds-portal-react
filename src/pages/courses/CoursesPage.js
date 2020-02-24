@@ -7,6 +7,7 @@ import PortalSearchPager from "../../components/search/PortalSearchPager";
 import PortalTable from "../../components/TableComponent/PortalTable";
 import PortalButtonSet from "../../components/navbar/PortalButtonSet";
 import server from "../../shared/server";
+import PortalMultipleSelect from "../../components/PortalMultipleSelect/PortalMultipleSelect";
 
 const CoursesPage = props => {
   const { handleLogout } = props;
@@ -29,7 +30,7 @@ const CoursesPage = props => {
       };
       server(activeUser, CoursesData, "SearchCourses").then(
         res => {
-          console.log(res.data);
+          console.log(res);
           setServerData(res.data.courses);
           setPages(res.data.pages);
 
@@ -82,7 +83,6 @@ const CoursesPage = props => {
   ];
 
   const handleActiveBtnClick = btnClicked => {
-    console.log(btnClicked);
     setCurrentPage(0);
     setActiveKey(btnClicked.key);
   };
