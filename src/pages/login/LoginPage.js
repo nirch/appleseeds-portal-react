@@ -21,6 +21,8 @@ const LoginPage = (props) => {
 
     const login = (e) => {
 
+        e.preventDefault();
+
         if (!email || !pwd) {
 
             setTextError("נא להזין שם משתמש וסיסמה");
