@@ -15,7 +15,6 @@ const HoursReportTable = (props) => {
 
     return (
         <div>
-            <h1>דיווח שעות</h1>
             <table className="hours-report-table">
                 <thead>
                     <tr>

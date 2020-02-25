@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './HoursReport.css'
 import './date.format'
 
@@ -18,10 +18,6 @@ const HoursReport = (props) => {
         }
     }
 
-
-    const startHour = new Date("January 1 2000 " + report.starthour);
-    const finishhour = new Date("January 1 2000 " + report.finishhour);
-    const timeDiff = new Date(finishhour-startHour);
     const date = createDateObject(report.date);
     let row_class;
     switch(report.approval){
@@ -43,7 +39,7 @@ const HoursReport = (props) => {
             <td>{date.format("dd.mm.yy")}</td>
             <td>{report.projectName}</td>
             <td>{report.subject}</td>
-            <td>{timeDiff.format("hh:MM")}</td> 
+            <td style={{direction:'ltr'}}>{report.totalTime}</td> 
         </tr>
     );
 }
