@@ -53,10 +53,16 @@ const HoursReportPage = (props) => {
                 //res.data.forEach(report=>{console.log(perimeter[report.projectid].projectName)});
                 let timeCount = 0;
                 res.data.forEach(report=>{
-                    // add projectName to report
-                    report.projectName=perimeter[report.projectid].projectName;
-                    // add subject to report
-                    report.subject = perimeter[report.projectid].subjects.find(subject=>subject.reportsubjectid==report.actionid).subject;
+                    // add projectName & subject to report
+                    const projectData = perimeter[report.projectid];
+                    if(projectData===undefined) {
+                      report.projectName = "NA";
+                      report.subject = "NA";  
+                    } else {
+                      report.projectName = projectData.projectName;
+                      const subjectData = projectData.subjects.find(subject=>subject.reportsubjectid==report.actionid);
+                      report.subject = (subjectData===undefined)? "NA" : subjectData.subject;
+                    }
                     // compute reported time from starthour and finishhour prperties
                     const startHour = new Date("January 1 2000 " + report.starthour);
                     const finishHour = new Date("January 1 2000 " + report.finishhour);
