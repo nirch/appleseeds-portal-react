@@ -15,10 +15,12 @@ const HoursReportTable = (props) => {
     // </button>
 
     let jsxReports=[];
-    reports.forEach(report => {
-        jsxReports.push(<HoursReport report={report}/>);
-    });
-
+    if(reports!==null && reports!==undefined) {
+        reports.forEach(report => {
+            jsxReports.push(<HoursReport report={report}/>);
+        });
+    }
+    
     return (
         <div>
             <h1>דיווח שעות</h1>

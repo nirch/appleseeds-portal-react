@@ -13,7 +13,7 @@ const HoursReportPage = (props) => {
     const { handleLogout } = props;
     const activeUser = useContext(ActiveUserContext);
     const [reports, setReports] = useState([]);
-    const [perimeter, setPerimeter] = useState([]);
+    const [perimeter, setPerimeter] = useState(null);
     const [showDate, setShowDate] = useState(new Date());
 
     const onShowDate=(aDate) => {
@@ -52,6 +52,13 @@ const HoursReportPage = (props) => {
           };
           server(activeUser, requestData, "GetReports").then(
             res => {
+                //res.data.forEach(report=>{console.log(perimeter[report.projectid].projectName)});
+                res.data.forEach(report=>{
+                    // add projectName to report
+                    report.projectName=perimeter[report.projectid].projectName;
+                    // add subject to report
+                    report.subject = perimeter[report.projectid].subjects.find(subject=>subject.reportsubjectid==report.actionid).subject;
+                });
                 setReports(res.data);
               console.log(res.data);
               console.log(reports);
@@ -67,10 +74,10 @@ const HoursReportPage = (props) => {
             }
           );
         };
-        if (activeUser) {
+        if (activeUser && perimeter!==null) {
           fetchData();
         }
-      }, [showDate]);
+      }, [showDate,perimeter]);
 
 
     

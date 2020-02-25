@@ -41,8 +41,8 @@ const HoursReport = (props) => {
     return (
         <tr className={row_class} style={row_style} >
             <td>{date.format("dd.mm.yy")}</td>
-            <td>{report.projectid}</td>
-            <td>{report.actionid}</td>
+            <td>{report.projectName}</td>
+            <td>{report.subject}</td>
             <td>{timeDiff.format("hh:MM")}</td> 
         </tr>
     );
