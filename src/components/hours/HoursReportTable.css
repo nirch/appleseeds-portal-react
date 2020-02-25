@@ -1,7 +1,15 @@
 
 
 .hours-report-table{
+    text-align: center;
     width:100%;
+    font-size: 0.75em;
+    font-family: Assistant-Regular;    
     border-collapse: separate;
-    border-spacing: 0 0.3em;
+    border-spacing: 0 1.0em;
+}
+
+.hours-report-table td{
+    padding-top: 7px;
+    padding-bottom: 7px;
 }
