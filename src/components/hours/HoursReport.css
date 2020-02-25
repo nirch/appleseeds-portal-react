@@ -1,16 +1,16 @@
-.hours-report-table > div {
+.c-hours-report-table > div {
     margin-top: 100px;
     margin-bottom: 100px;
 }
 
-.hours-report-table .not-approved{
+.c-hours-report-table .not-approved{
     background: #ffa1a1;
 }
 
-.hours-report-table .waiting{
+.c-hours-report-table .waiting{
     background: #ffd300;
 }
 
-.hours-report-table .approved{
+.c-hours-report-table .approved{
     background: #a1d47f;
 }
