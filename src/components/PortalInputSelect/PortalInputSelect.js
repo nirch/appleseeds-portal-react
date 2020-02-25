@@ -11,8 +11,6 @@ import "../PortalInputSelect/PortalInputSelect.css";
 
 const PortalInputSelect = props => {
   const { inputTitle, options, optionsKey, handleSelection} = props;
-  const [inputSelectValue, setInputSelectValue] = useState(optionsKey);
-
 // mapping the options arr[] to JSX options elements for rendering 
   const selectInputOptions = options.map(item => {
     return(<option key={item.key} value={item.key}>{item.label}</option>)
@@ -26,9 +24,8 @@ const PortalInputSelect = props => {
       {labelOn}
       <select
         className="c-portal-input-select-element"
-        value={inputSelectValue}
+        value={optionsKey}
         onChange={event => {
-          setInputSelectValue(event.target.value);
           // console.log(event.target.value);
           handleSelection(options.find(option => option.key === event.target.value));
         }}
