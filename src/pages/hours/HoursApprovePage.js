@@ -153,10 +153,19 @@ const HoursApprovePage = (props) => {
   
 
       const changeStatus = (reportId, newStatus) => {
-        const reportsCopy = [...reports];
-        const report = reportsCopy.find(currReport => currReport.id === reportId);
-        report.status = newStatus;
-        setReports(reportsCopy);
+
+        const data = {
+            reportids: [reportId],
+            status: newStatus,
+            checkdate2: true
+        }
+        server(activeUser, data, "SetReportApproval").then(() => {
+            const reportsCopy = [...reports];
+            const report = reportsCopy.find(currReport => currReport.id === reportId);
+            report.status = newStatus;
+            setReports(reportsCopy);
+        });
+        
       }
 
     let accordionBody=reports.map(item=>{
@@ -184,7 +193,7 @@ const HoursApprovePage = (props) => {
 
     return (
         <div className="p-hours-approve-page">
-            <PortalNavbar  handleLogout={handleLogout}/>
+            <PortalNavbar  handleLogout={handleLogout} navbarTitle="אישור שעות"/>
             <PortalDayMonthPickerComponent className="month-picker" date={new Date()} onShowDate={onShowDate}></PortalDayMonthPickerComponent>
             <PortalSearchPager  
                 placeholder={"חיפוש עובד"}
