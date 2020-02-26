@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import './users.css'
 import PortalNavbar from '../../components/navbar/PortalNavbar';
 import ActiveUserContext from '../../shared/activeUserContext'
-import { Redirect } from 'react-router-dom'
+import { Redirect, useParams } from 'react-router-dom'
 import PortalInput from '../../components/PortalInput'
 import PortalTabView from '../../components/PortalTabView/PortalTabView';
 import PortalHeaderView from '../../components/PortalHeaderView/PortalHeaderView';
@@ -10,9 +10,12 @@ import PortalHeaderView from '../../components/PortalHeaderView/PortalHeaderView
 const UserDetailsPage = (props) => {
     const { handleLogout } = props;
     const activeUser = useContext(ActiveUserContext);
+    const { id } = useParams();
+
     if (!activeUser) {
         return <Redirect to='/' />
     }
+
     // const userid = props.history.location.state.userid;
     const tabsObj = [{
         header: "פרופיל",
@@ -36,7 +39,7 @@ const UserDetailsPage = (props) => {
             <PortalNavbar handleLogout={handleLogout} />
             {/* <h1>עובדים</h1> */}
             {/* <div>{userid}</div> */}
-            <PortalHeaderView />
+            <PortalHeaderView userId={id} />
             <div>
                 <PortalInput inputTitle={'test'} inputValue={'input'} />
                 <PortalTabView tabsObj={tabsObj} />
