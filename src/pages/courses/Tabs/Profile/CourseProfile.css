@@ -1,11 +1,20 @@
-.row {
-    height: 58px;
+.profileContainer{
+    padding-right: 31px;
+}
+.profileRow:first-child {
+    margin-top: 28.5px;
+}
+.profileRow {
+    min-height: 58px;
     box-shadow: 0px 1px 1px 0px rgba(26,0,0,0.1);
-    margin-bottom: 13px;
+    margin-top: 13px;
+}
+.profileRow .c-portal-input {
+    padding: 0 !important;
 }   
-.c-portal-input-label {
+.profileRow .c-portal-input-label {
     font-family: Assistant-SemiBold;
 }
-.c-portal-input-element {
+.profileRow .c-portal-input-element {
     font-family: Assistant-Light;
 }

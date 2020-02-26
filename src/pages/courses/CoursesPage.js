@@ -7,7 +7,6 @@ import PortalSearchPager from "../../components/search/PortalSearchPager";
 import PortalTable from "../../components/TableComponent/PortalTable";
 import PortalButtonSet from "../../components/navbar/PortalButtonSet";
 import server from "../../shared/server";
-import PortalMultipleSelect from "../../components/PortalMultipleSelect/PortalMultipleSelect";
 
 const CoursesPage = props => {
   const { handleLogout } = props;
@@ -35,7 +34,7 @@ const CoursesPage = props => {
           setPages(res.data.pages);
 
           if (res.data.error) {
-            alert("error in login");
+            alert("error recieving courses data");
           } else {
             // handleLogin(res.data);
           }
@@ -49,8 +48,6 @@ const CoursesPage = props => {
       fetchData();
     }
   }, [activeUser, currentPage, activeKey, courseSearchString]);
-
-  //
 
   if (!activeUser) {
     return <Redirect to="/" />;
@@ -93,7 +90,7 @@ const CoursesPage = props => {
 
   return (
     <div className="p-courses">
-      <PortalNavbar handleLogout={handleLogout} />
+      <PortalNavbar navbarTitle="קורסים" handleLogout={handleLogout} />
       <PortalSearchPager
         placeholder={"חיפוש קורס"}
         pages={pages}
