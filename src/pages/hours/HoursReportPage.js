@@ -106,7 +106,7 @@ const HoursReportPage = (props) => {
 
     return (
         <div>
-            <PortalNavbar handleLogout={handleLogout}/>
+            <PortalNavbar handleLogout={handleLogout} navbarTitle={"דיווח שעות"}/>
             <PortalDayMonthPickerComponent onShowDate={onShowDate}/>
             <div className="p-total-hours">{totalHoursHeader}</div>
             <HoursReportTable reports={reports}/>
