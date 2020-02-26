@@ -4,13 +4,11 @@ import "./ReportedHoursDetailsItem.css"
 import { Checkbox } from 'react-bootstrap';
 
 const ReportedHoursDetailsItem = (props) => {
-    const {reportedHoursObject} =  props;
+    const {reportedHoursObject, changeStatus} =  props;
     if (!reportedHoursObject)
     {
         return null;
     }
-
-  
 
     const returnClassType= (reportedHoursObject)=>
     {
@@ -40,15 +38,15 @@ const ReportedHoursDetailsItem = (props) => {
             <div className="radio-action" >
                 <div>
                     <input type="radio" id={`approved-${reportedHoursObject.id}`} name={`radio-group${reportedHoursObject.id}`}  checked={returnClassType(reportedHoursObject)==="approved"} />
-                    <label className="approved" for={`approved-${reportedHoursObject.id}`}>אשר<div className="radio approved"><span></span></div></label>
+                    <label className="approved" for={`approved-${reportedHoursObject.id}`}>אשר<div className="radio approved" onClick={() => changeStatus(reportedHoursObject.id, 1)}><span></span></div></label>
                 </div>
                 <div>
                     <input type="radio" id={`pending-${reportedHoursObject.id}`} name={`radio-group${reportedHoursObject.id}`} checked={returnClassType(reportedHoursObject)==="pending"} />  
-                    <label className="pending" for={`pending-   ${reportedHoursObject.id}`}>ממתין<div className="radio pending"><span></span></div></label>
+                    <label className="pending" for={`pending-   ${reportedHoursObject.id}`}>ממתין<div className="radio pending" onClick={() => changeStatus(reportedHoursObject.id, 0)}><span></span></div></label>
                 </div>
                 <div >    
                     <input type="radio" id={`rejected-${reportedHoursObject.id}`} name={`radio-group${reportedHoursObject.id}`} checked={returnClassType(reportedHoursObject)==="rejected"} />
-                    <label className="rejected" for={`rejected-${reportedHoursObject.id}`}>דחה<div className="radio rejected"><span></span></div></label>
+                    <label className="rejected" for={`rejected-${reportedHoursObject.id}`}>דחה<div className="radio rejected" onClick={() => changeStatus(reportedHoursObject.id, -1)}><span></span></div></label>
                 </div>
                
             </div>

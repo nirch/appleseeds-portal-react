@@ -152,10 +152,16 @@ const HoursApprovePage = (props) => {
       }
   
 
+      const changeStatus = (reportId, newStatus) => {
+        const reportsCopy = [...reports];
+        const report = reportsCopy.find(currReport => currReport.id === reportId);
+        report.status = newStatus;
+        setReports(reportsCopy);
+      }
 
     let accordionBody=reports.map(item=>{
         return(
-            <ReportedHoursDetailsItem reportedHoursObject={item}></ReportedHoursDetailsItem>
+            <ReportedHoursDetailsItem reportedHoursObject={item} changeStatus={changeStatus}></ReportedHoursDetailsItem>
         )
     });
 
