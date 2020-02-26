@@ -61,6 +61,8 @@ const CourseProfile = (props) => {
             })
             setBudgetYearList(x);            
         })
+
+
  
     }, [])
 
@@ -68,20 +70,20 @@ const CourseProfile = (props) => {
         <Container className="profileContainer">
             <Row className="profileRow">
                 <Col>
-                    <PortalInput inputTitle="שם קורס מלא" inputPlaceholder={courseName} inputValue={courseName} handleChange={() => emptyFunc()}/>
+                    <PortalInput inputTitle="שם קורס מלא" inputPlaceholder={courseName} inputValue={courseName} handleChange={(v) => setCourseName(v)}/>
                 </Col>
             </Row>
             <Row className="profileRow">
                 <Col>
-                    <PortalInput inputTitle="שם קורס מקוצר בעברית" inputPlaceholder={hebrewShortName} inputValue={hebrewShortName} handleChange={() => emptyFunc()}/>
+                    <PortalInput inputTitle="שם קורס מקוצר בעברית" inputPlaceholder={hebrewShortName} inputValue={hebrewShortName} handleChange={(v) => setHebrewShortName(v)}/>
                 </Col>
                 <Col>
-                    <PortalInput inputTitle="שם קורס מקוצר בערבית" inputPlaceholder={arabShortName} inputValue={arabShortName} handleChange={() => emptyFunc()}/>
+                    <PortalInput inputTitle="שם קורס מקוצר בערבית" inputPlaceholder={arabShortName} inputValue={arabShortName} handleChange={(v) => setarabShortName(v)}/>
                 </Col>
             </Row>
             <Row className="profileRow">
                 <Col>
-                    <PortalInputSelect inputTitle="פרויקט" options={projectList} optionsKey={project} handleSelection={() => emptyFunc()}/>
+                    <PortalInputSelect inputTitle="פרויקט" options={projectList} optionsKey={project} handleSelection={(v) => setProject(v)}/>
                 </Col>
             </Row>
             <Row className="profileRow">
@@ -91,15 +93,15 @@ const CourseProfile = (props) => {
             </Row>
             <Row className="profileRow">
                 <Col>
-                    <PortalInputSelect inputTitle="עיר" options={cityList} optionsKey={city} handleSelection={() => emptyFunc()}/>
+                    <PortalInputSelect inputTitle="עיר" options={cityList} optionsKey={city} handleSelection={(v) => setCity(v)}/>
                 </Col>
                 <Col>
-                    <PortalInputSelect inputTitle="שנת תקציב" options={budgetYearList} optionsKey={budgetYear} handleSelection={() => emptyFunc()}/>
+                    <PortalInputSelect inputTitle="שנת תקציב" options={budgetYearList} optionsKey={budgetYear} handleSelection={(v) => setBudgetYear(v)}/>
                 </Col>
             </Row>
             <Row className="profileRow">
                 <Col>
-                    <PortalInput inputTitle="מדריך" inputPlaceholder={instructer} inputValue={instructer} handleChange={() => emptyFunc()}/>
+                    <PortalInput inputTitle="מדריך" inputPlaceholder={instructer} inputValue={instructer} handleChange={(v) => setInstructer(v)}/>
                 </Col>
             </Row>
         </Container>
