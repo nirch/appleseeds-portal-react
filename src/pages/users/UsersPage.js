@@ -69,17 +69,19 @@ const UsersPage = (props) => {
     const clickOnRow = (e) => {
         props.history.push({
             pathname: `/users/${e.userid}`,
-            state: {userid: e.userid}
+            state: {user: e}
         });
     };
 
 
     return (
-        <div>
+        <div className="p-users">
             <PortalNavbar handleLogout={handleLogout}/>
             <PortalSearchPager placeholder='חיפוש משתמש' handleSearch={(e) => handleSearch(e)} pages={data.pages}
                                pageChange={(index) => callPageData(index)} currentPage={pageNum}/>
-            <PortalTable headers={headers} data={data.users} handleClick={(e) => clickOnRow(e)}>blah</PortalTable>
+            <div className="p-users">
+                <PortalTable headers={headers} data={data.users} handleClick={(e) => clickOnRow(e)}/>
+            </div>
             <PortalButtonSet buttons={[{key: 1, label: 'פעילים'}, {key: 0, label: 'לא פעילים'}]}
                              handleClick={(item) => handleUserType(item)} activeKey={userStatus}/>
         </div>
