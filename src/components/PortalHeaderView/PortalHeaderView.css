@@ -1,0 +1,68 @@
+.c_portalHeaderView{
+    
+    background: linear-gradient(to bottom, white 95%, rgb(229,229,229) 100%)!important;
+}
+.c_portalHeaderView >div> p , .c_portalHeaderView > p{
+    margin-right:18px;
+    font-size:28px;
+    color: "#5d5d5d";
+    line-height: 18px;
+    font-family: Assistant-SemiBold;
+    letter-spacing: 0px;
+}
+
+.c_portalHeaderView > .container {
+
+    display: flex;
+    padding-right: 0px;
+    justify-content: space-between;
+   
+
+}
+.c_portalHeaderView > .container > .flextoleft{
+    display: flex;
+}
+.c_portalHeaderView > .container > .flextoleft > .thirdimg {
+    
+    padding-right: 20px;
+}
+.c_portalHeaderView > .container > .flextoleft > .secondimg {
+    padding-left:20px;
+    padding-right: 20px;
+}
+.c_portalHeaderView > .container > .flextoleft > .firstimg {
+    
+    padding-left: 20px;
+}
+.c_portalHeaderView > .changepass {
+    display:flex;
+    justify-content: space-between;
+}
+.c_portalHeaderView > .changepass >img {
+    margin-left: 13px;
+
+}
+
+.c_portalHeaderView > .changepass > div{
+    display: flex;
+    margin-top:20px;
+}
+.c_portalHeaderView > .changepass > div > input{
+    margin-right: 18px;
+    
+}
+.c_portalHeaderView > .changepass > div > label{
+    padding-right: 16px;
+    color: #5d5d5d;
+    font-family:Assistant-Regular ;
+    font-size: 10px;
+    line-height: 1;
+}
+.c_portalHeaderView > p:nth-child(4){
+    font-size: 10px; 
+    position: relative;
+    bottom: 20px;
+    color: #5d5d5d;
+    font-family:Assistant-Regular ;
+    margin-bottom: 14px;
+}

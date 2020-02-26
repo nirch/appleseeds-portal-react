@@ -5,6 +5,8 @@ import ActiveUserContext from '../../shared/activeUserContext'
 import HoursReportTable from '../../components/hours/HoursReportTable'
 import PortalDayMonthPickerComponent from '../../components/PortalDayMonthPickerComponent/PortalDayMonthPickerComponent'
 import server from "../../shared/server";
+import ToolBarFooter from "../../components/hours/ToolBarFooter";
+
 
 const HoursReportPage = (props) => {
     const { handleLogout } = props;
@@ -104,10 +106,11 @@ const HoursReportPage = (props) => {
 
     return (
         <div>
-            <PortalNavbar handleLogout={handleLogout}/>
+            <PortalNavbar handleLogout={handleLogout} navbarTitle={"דיווח שעות"}/>
             <PortalDayMonthPickerComponent onShowDate={onShowDate}/>
             <div className="p-total-hours">{totalHoursHeader}</div>
             <HoursReportTable reports={reports}/>
+            <ToolBarFooter/>
         </div>
     );
 }
