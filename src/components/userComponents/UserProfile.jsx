@@ -9,10 +9,10 @@ import ActiveUserContext from "../../shared/activeUserContext";
 
 function UserProfile(props) {
     const [profile,setProfile] = useState({});
-    const [cities, setCities] = useState({});
-    const [genders, setGenders] = useState({});
-    const [religions, setReligions] = useState({});
-    const {userid, firstname, lastname, firstnameinarabic, lastnameinarabic,phone,tznumber,birthday,email,cityname,gendername,religionname,address} = props.user;
+    const [cities, setCities] = useState([]);
+    const [genders, setGenders] = useState([]);
+    const [religions, setReligions] = useState([]);
+
     const activeUser = useContext(ActiveUserContext);
     const handleChange = (e) => {
         console.log(e.target);
@@ -20,11 +20,13 @@ function UserProfile(props) {
 
     useEffect(()=> {
         const getUserProfileById = async () => {
-            await server(activeUser, {userId: userid}, 'GetUserProfileById').then(res => {
+            debugger
+            await server(activeUser, {userId: props.user}, 'GetUserProfileById').then(res => {
                 console.log(res);
                 if (res.data.error) {
                     alert("error in login");
                 } else {
+                    debugger
                     setProfile(res.data.profile);
                 }
             }, err => {
@@ -77,6 +79,15 @@ function UserProfile(props) {
         })
     },[]);
 
+
+    // let initialCity = cities.find(city => city.label === cityname);
+
+    if (cities.length < 1 && profile){
+        return <div>fds</div>
+    }
+    const {userid, firstname, lastname, firstnameinarabic, lastnameinarabic,phone,tznumber,birthday,email,cityname,gendername,religionname,address} = profile;
+    debugger
+
     return (
         <Container>
             <Row>
@@ -126,10 +137,10 @@ function UserProfile(props) {
                 </Col>
             </Row>
             <Row>
-                {/*<Col>*/}
-                {/*    <PortalInput inputTitle={cityname}*/}
-                {/*                 handleSelection={() => (e) => handleChange(e)} options={cities.length <=0 ? [{key: "0", label: "male"}, {key: "1", label: "female"}, {key: "2",label: "undefined"}]: cities } optionsKey={profile.cityid}/>*/}
-                {/*</Col>*/}
+                <Col>
+                    <PortalInputSelect inputTitle={cityname}
+                                 handleSelection={() => (e) => handleChange(e)} options={cities} optionsKey={'0'}/>
+                </Col>
                 <Col>
                     <PortalInput inputTitle={'כתובת'} inputPlaceholder={address}
                                  handleChange={() => (e) => handleChange(e)}/>
