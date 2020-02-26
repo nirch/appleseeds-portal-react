@@ -7,7 +7,6 @@ import PortalSearchPager from "../../components/search/PortalSearchPager";
 import PortalTable from "../../components/TableComponent/PortalTable";
 import PortalButtonSet from "../../components/navbar/PortalButtonSet";
 import server from "../../shared/server";
-import PortalMultipleSelect from "../../components/PortalMultipleSelect/PortalMultipleSelect";
 
 const CoursesPage = props => {
   const { handleLogout } = props;
@@ -18,13 +17,6 @@ const CoursesPage = props => {
   const [currentPage, setCurrentPage] = useState(0);
   const [serverData, setServerData] = useState([]);
   const [pages, setPages] = useState(0);
-  const [options, setOptions] = useState([
-    { value: "1", label: "תגית 1" },
-    { value: "2", label: "תגית 2" },
-    { value: "3", label: "תגית 3" }
-  ]);
-  const [selectedOptions, setSelectedOptions] = useState([]);
-  const [hideSelectList, setHideSelectList] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -96,63 +88,15 @@ const CoursesPage = props => {
     setselectedCourseId(courseSelected.courseid);
   };
 
-  const displaySelectList = () => {
-    setHideSelectList(!hideSelectList);
-  };
-
-  // Callback function that adds a selected option from the options array
-  // and deletes it from the options array
-  const addOption = selectedOption => {
-    setSelectedOptions(selectedOptions.concat(selectedOption));
-
-    for (let i = 0; i < options.length; i++) {
-      if (options[i].value === selectedOption.value) {
-        options.splice(i, 1);
-        setOptions(options);
-        break;
-      }
-    }
-    setHideSelectList(!hideSelectList);
-  };
-
-  // Callback function that deletes a selected option from the selectedOptions array
-  // and add it back to the options array
-  const deleteOption = index => {
-    const tempOption = selectedOptions[index];
-    const cloneList = [...selectedOptions];
-    cloneList.splice(index, 1);
-    setSelectedOptions(cloneList);
-    setOptions(options.concat(tempOption));
-  };
-
-  // Callback function that deletes all selected options from the selectedOptions array
-  // and adds them back to the options array
-  const deleteAllOptions = () => {
-    const cloneList = [...selectedOptions];
-    setSelectedOptions([]);
-    setOptions(options.concat(cloneList));
-    setHideSelectList(true);
-  };
-
   return (
     <div className="p-courses">
-      <PortalNavbar handleLogout={handleLogout} />
+      <PortalNavbar navbarTitle="קורסים" handleLogout={handleLogout} />
       <PortalSearchPager
         placeholder={"חיפוש קורס"}
         pages={pages}
         currentPage={currentPage}
         handleSearch={handleSearch}
         pageChange={pageChange}
-      />
-      <PortalMultipleSelect
-        label={"תגיות"}
-        hideSelectList={hideSelectList}
-        displaySelectList={displaySelectList}
-        options={options}
-        selectedOptions={selectedOptions}
-        addOption={addOption}
-        deleteOption={deleteOption}
-        deleteAllOptions={deleteAllOptions}
       />
       <div className="table">
         <PortalTable
