@@ -15,6 +15,15 @@ const HoursApprovePage = (props) => {
     const activeUser = useContext(ActiveUserContext);
     const [currentWorker,setCurrentWorker]=useState(null);
     const [reports, setReports] = useState([]);
+    const [pages, setPages] = useState(0);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [workersSearchString, setWorkersSearchString] = useState("");
+    
+    
+    const onShowDate=(aDate) => {
+        //setShowDate(aDate);
+    }
+    
     
     useEffect(() => {     
         if (currentWorker) {
@@ -25,6 +34,8 @@ const HoursApprovePage = (props) => {
         }
 
     }, [currentWorker])
+
+
 
     if (!activeUser) {
         return <Redirect to='/' />
@@ -123,6 +134,15 @@ const HoursApprovePage = (props) => {
         return reportedHoursArray;
     }
 
+    const handleSearch = searchInput => {
+        setCurrentPage(0);
+        setWorkersSearchString(searchInput);
+      };
+
+      const pageChange = newCurrentPage => {
+        setCurrentPage(newCurrentPage);
+      };
+
     const handleAccordionClick=(event)=>{
         console.log(event);
         setCurrentWorker(event) ;  // current worker id is set
@@ -156,8 +176,14 @@ const HoursApprovePage = (props) => {
     return (
         <div className="p-hours-approve-page">
             <PortalNavbar  handleLogout={handleLogout}/>
-            <PortalDayMonthPickerComponent className="month-picker" date={new Date('1/1/1960')}></PortalDayMonthPickerComponent>
-            <PortalSearchPager  placeholder={"חיפוש עובד"}></PortalSearchPager>
+            <PortalDayMonthPickerComponent className="month-picker" date={new Date('1/1/1960')} onShowDate={onShowDate}></PortalDayMonthPickerComponent>
+            <PortalSearchPager  
+                placeholder={"חיפוש עובד"}
+                pages={pages}
+                currentPage={currentPage}
+                handleSearch={handleSearch}
+                pageChange={pageChange}>
+            </PortalSearchPager>
             <Accordion>
                 {accordionItems}
             </Accordion>
