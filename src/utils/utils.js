@@ -19,7 +19,7 @@ function getHeaders() {
 }
 
 function getUserDetailsProfileAPIs() {
-    return ['GetManagedUsersByUserId','GetUserProjects']
+    return ['GetUserProfileById','GetManagedUsersByUserId','GetUserProjects']
 }
 
 

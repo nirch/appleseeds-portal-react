@@ -3,8 +3,8 @@ import './users.css'
 import PortalNavbar from '../../components/navbar/PortalNavbar';
 import ActiveUserContext from '../../shared/activeUserContext'
 import { Redirect } from 'react-router-dom'
-import PortalInput from '../../components/PortalInput'
 import PortalTabView from '../../components/PortalTabView/PortalTabView';
+import UserProfile from "../../components/userComponents/UserProfile";
 
 const UserDetailsPage = (props) => {
     const { handleLogout } = props;
@@ -15,7 +15,7 @@ const UserDetailsPage = (props) => {
     // const userid = props.history.location.state.userid;
     const tabsObj = [{
         header: "פרופיל",
-        view: <p>I'm profile page</p>
+        view: <UserProfile user={props.history.location.pathname.split('/').pop()}/>
     },
     {
         header: "קורסים",
@@ -34,7 +34,6 @@ const UserDetailsPage = (props) => {
         <div>
             <PortalNavbar handleLogout={handleLogout} />
             <div>
-                <PortalInput inputTitle={'test'} inputValue={'input'}/>
                 <PortalTabView tabsObj={tabsObj} />
             </div>
         </div>
