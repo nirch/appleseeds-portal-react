@@ -223,34 +223,27 @@ function UserProfile(props) {
             </Row>
             <Row>
                 <Col>
-                    <PortalMultipleSelect label={'מאשרי שעות נוספים'} displaySelectList={() => console.log()} hideSelectList={()=> console.log('ccccccc')} options={tagsList} selectedOptions={tagsSelected} addOption={(tag) => addOption(tag)} deleteOption={(i) => deleteOption(i)} deleteAllOptions={() => deleteAllOptions()}/>
+                    <PortalMultipleSelect label='מאשרי שעות נוספים' displaySelectList={() => displaySelectList()} hideSelectList={hideSelectList} options={tagsList} selectedOptions={tagsSelected} addOption={(tag) => addOption(tag)} deleteOption={(i) => deleteOption(i)} deleteAllOptions={() => deleteAllOptions()}/>
                 </Col>
             </Row>
             <Row>
                 <Col>
-                    <PortalMultipleSelect label={'תעודות'} displaySelectList={() => console.log()} hideSelectList={()=> console.log('ccccccc')} options={tagsList} selectedOptions={tagsSelected} addOption={(tag) => addOption(tag)} deleteOption={(i) => deleteOption(i)} deleteAllOptions={() => deleteAllOptions()}/>
+                    <PortalMultipleSelect label="תעודות" displaySelectList={() => displaySelectList()} hideSelectList={hideSelectList} options={tagsList} selectedOptions={tagsSelected} addOption={(tag) => addOption(tag)} deleteOption={(i) => deleteOption(i)} deleteAllOptions={() => deleteAllOptions()}/>
                 </Col>
             </Row>
             <Row>
                 <Col>
-                    <PortalMultipleSelect label={'תעודות בגרות'} displaySelectList={() => console.log()} hideSelectList={()=> console.log('ccccccc')} options={tagsList} selectedOptions={tagsSelected} addOption={(tag) => addOption(tag)} deleteOption={(i) => deleteOption(i)} deleteAllOptions={() => deleteAllOptions()}/>
+                    <PortalMultipleSelect label='תעודות בגרות' displaySelectList={() => displaySelectList()} hideSelectList={hideSelectList} options={tagsList} selectedOptions={tagsSelected} addOption={(tag) => addOption(tag)} deleteOption={(i) => deleteOption(i)} deleteAllOptions={() => deleteAllOptions()}/>
                 </Col>
             </Row>
             <Row>
                 <Col>
-                    <PortalMultipleSelect label={'שםות'} displaySelectList={() => console.log()} hideSelectList={()=> console.log('ccccccc')} options={tagsList} selectedOptions={tagsSelected} addOption={(tag) => addOption(tag)} deleteOption={(i) => deleteOption(i)} deleteAllOptions={() => deleteAllOptions()}/>
+                    <PortalMultipleSelect label="שונות" displaySelectList={() => displaySelectList()} hideSelectList={hideSelectList} options={tagsList} selectedOptions={tagsSelected} addOption={(tag) => addOption(tag)} deleteOption={(i) => deleteOption(i)} deleteAllOptions={() => deleteAllOptions()}/>
                 </Col>
             </Row>
             <Row>
                 <Col>
-                    <PortalInput inputTitle={'שםות'} inputPlaceholder={phone}
-                                 handleChange={() => (e) => handleChange(e)}/>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <PortalInput inputTitle={'פרויקטים'} inputPlaceholder={phone}
-                                 handleChange={() => (e) => handleChange(e)}/>
+                    <PortalMultipleSelect label="פרויקטים" displaySelectList={() => displaySelectList()} hideSelectList={hideSelectList} options={tagsList} selectedOptions={tagsSelected} addOption={(tag) => addOption(tag)} deleteOption={(i) => deleteOption(i)} deleteAllOptions={() => deleteAllOptions()}/>
                 </Col>
             </Row>
         </Container>
