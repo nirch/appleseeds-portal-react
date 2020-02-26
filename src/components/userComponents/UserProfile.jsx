@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {Fragment, useContext, useEffect, useState} from 'react';
 import PortalInput from "../PortalInput";
 import PortalInputSelect from "../../components/PortalInputSelect/PortalInputSelect";
 import Container from "react-bootstrap/Container";
@@ -20,13 +20,11 @@ function UserProfile(props) {
 
     useEffect(()=> {
         const getUserProfileById = async () => {
-            debugger
             await server(activeUser, {userId: props.user}, 'GetUserProfileById').then(res => {
                 console.log(res);
                 if (res.data.error) {
                     alert("error in login");
                 } else {
-                    debugger
                     setProfile(res.data.profile);
                 }
             }, err => {
@@ -56,7 +54,12 @@ function UserProfile(props) {
                 if (res.data.error) {
                     alert("error in login");
                 } else {
-                    setGenders(res.data);
+                    setGenders(res.data.map(item => {
+                        return {
+                            key: item.genderid,
+                            label: item.name
+                        }
+                    }));
                 }
             }, err => {
                 console.error(err);
@@ -68,7 +71,12 @@ function UserProfile(props) {
                 if (res.data.error) {
                     alert("error in login");
                 } else {
-                    setReligions(res.data);
+                    setReligions(res.data.map(item => {
+                        return {
+                            key: item.religionid,
+                            label: item.name
+                        }
+                    }));
                 }
             }, err => {
                 console.error(err);
@@ -79,15 +87,11 @@ function UserProfile(props) {
         })
     },[]);
 
-
-    // let initialCity = cities.find(city => city.label === cityname);
-
     if (cities.length < 1 && profile){
-        return <div>fds</div>
+        return <Fragment/>
     }
-    const {userid, firstname, lastname, firstnameinarabic, lastnameinarabic,phone,tznumber,birthday,email,cityname,gendername,religionname,address} = profile;
     debugger
-
+    const {userid, firstname, lastname, firstnameinarabic, lastnameinarabic,phone,phone2,phone2owner,superstaffname,tznumber,birthday,email,cityid,religionid,genderid,address} = profile;
     return (
         <Container>
             <Row>
@@ -118,11 +122,11 @@ function UserProfile(props) {
             </Row>
             <Row>
                 <Col>
-                    <PortalInput inputTitle={'מס\' טלפון נוסף'} inputPlaceholder={firstnameinarabic}
+                    <PortalInput inputTitle={'מס\' טלפון נוסף'} inputPlaceholder={phone2}
                                  handleChange={() => (e) => handleChange(e)}/>
                 </Col>
                 <Col>
-                    <PortalInput inputTitle={'שייך ל'} inputPlaceholder={lastnameinarabic}
+                    <PortalInput inputTitle={'שייך ל'} inputPlaceholder={phone2owner}
                                  handleChange={() => (e) => handleChange(e)}/>
                 </Col>
             </Row>
@@ -138,8 +142,8 @@ function UserProfile(props) {
             </Row>
             <Row>
                 <Col>
-                    <PortalInputSelect inputTitle={cityname}
-                                 handleSelection={() => (e) => handleChange(e)} options={cities} optionsKey={'0'}/>
+                    <PortalInputSelect inputTitle={'עיר'}
+                                 handleSelection={() => (e) => handleChange(e)} options={cities} optionsKey={cityid}/>
                 </Col>
                 <Col>
                     <PortalInput inputTitle={'כתובת'} inputPlaceholder={address}
@@ -148,17 +152,17 @@ function UserProfile(props) {
             </Row>
             <Row>
                 <Col>
-                    <PortalInput inputTitle={'מגזר'} inputPlaceholder={religionname}
-                                       handleSelection={() => (e) => handleChange(e)} options={null} optionsKey={null}/>
+                    <PortalInputSelect inputTitle={'מגזר'}
+                                       handleSelection={() => (e) => handleChange(e)} options={religions} optionsKey={religionid}/>
                 </Col>
                 <Col>
-                    <PortalInput inputTitle={'מגדר'} inputPlaceholder={gendername}
-                                       handleSelection={() => (e) => handleChange(e)} options={null} optionsKey={null}/>
+                    <PortalInputSelect inputTitle={'מגדר'}
+                                       handleSelection={() => (e) => handleChange(e)} options={genders} optionsKey={genderid}/>
                 </Col>
             </Row>
             <Row>
                 <Col>
-                    <PortalInput inputTitle={'אימייל'} inputPlaceholder={phone}
+                    <PortalInput inputTitle={'אימייל'} inputPlaceholder={email}
                                  handleChange={() => (e) => handleChange(e)}/>
                 </Col>
             </Row>
@@ -170,7 +174,7 @@ function UserProfile(props) {
             </Row>
             <Row>
                 <Col>
-                    <PortalInput inputTitle={'מאשרי שעות נוספים'} inputPlaceholder={phone}
+                    <PortalInput inputTitle={'מאשרי שעות נוספים'} inputPlaceholder={superstaffname}
                                  handleChange={() => (e) => handleChange(e)}/>
                 </Col>
             </Row>
