@@ -66,12 +66,12 @@ const CourseProfile = (props) => {
 
     return (
         <Container>
-            <Row>
+            <Row className="profileRow">
                 <Col>
                     <PortalInput inputTitle="שם קורס מלא" inputPlaceholder={courseName} inputValue={courseName} handleChange={() => emptyFunc()}/>
                 </Col>
             </Row>
-            <Row>
+            <Row className="profileRow">
                 <Col>
                     <PortalInput inputTitle="שם קורס מקוצר בעברית" inputPlaceholder={hebrewShortName} inputValue={hebrewShortName} handleChange={() => emptyFunc()}/>
                 </Col>
@@ -79,17 +79,17 @@ const CourseProfile = (props) => {
                     <PortalInput inputTitle="שם קורס מקוצר בערבית" inputPlaceholder={arabShortName} inputValue={arabShortName} handleChange={() => emptyFunc()}/>
                 </Col>
             </Row>
-            <Row>
+            <Row className="profileRow">
                 <Col>
                     <PortalInputSelect inputTitle="פרויקט" options={projectList} optionsKey={project} handleSelection={() => emptyFunc()}/>
                 </Col>
             </Row>
-            <Row>
+            <Row className="profileRow">
                 <Col>
                     <PortalInput inputTitle="תגיות" inputPlaceholder={tags} inputValue={tags} handleChange={() => emptyFunc()}/>
                 </Col>
             </Row>
-            <Row>
+            <Row className="profileRow">
                 <Col>
                     <PortalInputSelect inputTitle="עיר" options={cityList} optionsKey={city} handleSelection={() => emptyFunc()}/>
                 </Col>
@@ -97,7 +97,7 @@ const CourseProfile = (props) => {
                     <PortalInputSelect inputTitle="שנת תקציב" options={budgetYearList} optionsKey={budgetYear} handleSelection={() => emptyFunc()}/>
                 </Col>
             </Row>
-            <Row>
+            <Row className="profileRow">
                 <Col>
                     <PortalInput inputTitle="מדריך" inputPlaceholder={instructer} inputValue={instructer} handleChange={() => emptyFunc()}/>
                 </Col>
