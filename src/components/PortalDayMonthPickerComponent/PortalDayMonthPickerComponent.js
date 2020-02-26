@@ -18,6 +18,7 @@ const PortalDayMonthPickerComponent = (props) => {
     // format of the date that will be shown on screen
     const showText=(aDate)=>
     {
+        props.onShowDate(aDate);
         if (displayType==="day")
         { 
            return aDate.toLocaleDateString('en-GB') ;

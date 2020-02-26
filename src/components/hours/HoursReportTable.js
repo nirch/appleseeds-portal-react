@@ -4,24 +4,18 @@ import HoursReport from './HoursReport';
 
 
 const HoursReportTable = (props) => {
-    // Declare a new state variable, which we'll call "count"
-    // const [count, setCount] = useState(0);
-    const [reports, setReports] = useState(props.reports);
-    
-    // <p>You clicked {count}times</p>
-    // <button onClick={() => setCount(count + 1)}>
-    //     Click me
-    // </button>
+    const { reports } = props;
 
     let jsxReports=[];
-    reports.forEach(report => {
-        jsxReports.push(<HoursReport report={report}/>);
-    });
+    if(reports!==null && reports!==undefined) {
+        reports.forEach(report => {
+            jsxReports.push(<HoursReport report={report}/>);
+        });
+    }
 
     return (
         <div>
-            <h1>דיווח שעות</h1>
-            <table className="hours-report-table">
+            <table className="c-hours-report-table">
                 <thead>
                     <tr>
                         <th>תאריך</th>

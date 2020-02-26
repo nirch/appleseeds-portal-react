@@ -1,6 +1,6 @@
 .c-portal-input-select  {
     height: 42px;
-
+    margin-top: 10px;
 }
 .c-portal-input-select label {
     margin-bottom: 0px;
@@ -18,5 +18,5 @@
     font-family: Assistant-light;
     font-size: 12px;
     width: 88%;
-    background: url("./arrow-down.png") 4% / 6% no-repeat #fff;
+    background: url("./arrow-down.png") 20px / 12px no-repeat #fff;
 }
