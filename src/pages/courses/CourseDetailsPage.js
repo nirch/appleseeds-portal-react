@@ -2,27 +2,29 @@ import React, { useContext } from 'react';
 import './courses.css'
 import PortalNavbar from '../../components/navbar/PortalNavbar';
 import ActiveUserContext from '../../shared/activeUserContext'
-import { Redirect } from 'react-router-dom'
+import { Redirect, useParams } from 'react-router-dom'
 import PortalTabView from '../../components/PortalTabView/PortalTabView';
+import CourseProfile from './Tabs/Profile/CourseProfile';
 
 const CourseDetailsPage = (props) => {
     const { handleLogout } = props;
     const activeUser = useContext(ActiveUserContext);
+    const {id} = useParams();
     const tabsObj = [{
-        header: "פרופיל",
-        view: <p>I'm profile page</p>
+        header: "קורס",
+        view: <CourseProfile courseId={id}/>
     },
     {
-        header: "קורסים",
-        view: <p>I'm courses page</p>
+        header: "סילבוס",
+        view: <p>I'm sylabus page</p>
     },
     {
-        header: "עובדים",
-        view: <p>I'm employees page</p>
+        header: "סטודנטים",
+        view: <p>I'm students page</p>
     },
     {
-        header: "דיווח",
-        view: <p>I'm report page</p>
+        header: "מדריכים",
+        view: <p>I'm instructers page</p>
     }];
 
 

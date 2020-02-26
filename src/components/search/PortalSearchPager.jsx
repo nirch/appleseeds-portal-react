@@ -7,7 +7,7 @@ import "./search.css";
 //  placeholder. string. the placeholder string for the search input
 //  pages. number. the total number of pages the user can page through.
 //         If this number is 0 do not render the paging on the left.
-//  handleSearch. callback function. Gets called when the user submits (press enter)
+//  handleSearch. callback function. Gets called when the user submits (presses enter)
 //                on the search input. Sends the input text.
 //  const handleSearch = searchInput => {
 //  console.log(searchInput);

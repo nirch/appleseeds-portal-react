@@ -38,15 +38,8 @@ const UserDetailsPage = (props) => {
             {/* <div>{userid}</div> */}
             <PortalHeaderView />
             <div>
+                <PortalInput inputTitle={'test'} inputValue={'input'} />
                 <PortalTabView tabsObj={tabsObj} />
-
-                {/* <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput>
-                <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput>
-                <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput>
-                <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput>
-                <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput>
-                <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput>
-                <PortalInput inputTitle={'test'} inputValue={'input'} ></PortalInput> */}
             </div>
         </div>
     );
