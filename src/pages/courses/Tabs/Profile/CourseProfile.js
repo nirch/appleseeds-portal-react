@@ -12,11 +12,13 @@ const CourseProfile = (props) => {
     const [courseName, setCourseName] = useState("");
     const [hebrewShortName, setHebrewShortName] = useState("");
     const [arabShortName, setarabShortName] = useState("");
-    const [project, setProject] = useState([]);
+    const [project, setProject] = useState("");
+    const [projectList, setProjectList] = useState([]);
     const [tags, setTags] = useState("");
     const [city, setCity] = useState("");
     const [cityList, setCityList] = useState([]);
-    const [budgetYear, setBudgetYear] = useState([]);
+    const [budgetYear, setBudgetYear] = useState("");
+    const [budgetYearList, setBudgetYearList] = useState([]);
     const [instructer, setInstructer] = useState("");
     const activeUser = useContext(ActiveUserContext);
 
@@ -26,25 +28,38 @@ const CourseProfile = (props) => {
     useEffect(() => {
         // read data from server using courseId and updates all the fields
         server(activeUser, {courseid: courseId}, "GetCourseById").then(res => {
-            console.log(res);
             setCourseName(res.data.name);
             setHebrewShortName(res.data.subname);
             setarabShortName(res.data.subnameinarabic);
-            setProject([{key : "0", value: "כחול", label:"כחול"} , {key: "1", value: "אדום", label:"אדום"}]);
+            setProject(res.data.projectid);
             setTags("טעגס");
             setCity(res.data.cityid);
             setBudgetYear([{key : "0", value: "כחול", label:"כחול"} , {key: "1", value: "אדום", label:"אדום"}]);
             setInstructer(res.data.primaryTeacherName);
         })
         server(activeUser, {}, "GetCities").then(res => {
-            console.log(res);
             let x=[];
             res.data.forEach(city => {
                 const y = {key: city.cityid, value: city.name, label: city.name}
                 x.push(y);
             })
-            setCityList(x);
-            
+            setCityList(x);            
+        })
+        server(activeUser, {}, "GetProjects").then(res => {
+            let x=[];
+            res.data.forEach(project => {
+                const y = {key: project.projectid, value: project.projectname, label: project.projectname}
+                x.push(y);
+            })
+            setProjectList(x);            
+        })
+        server(activeUser, {}, "GetActiveYearsBudget").then(res => {
+            let x=[];
+            res.data.forEach(year => {
+                const y = {key: year.yearbudgetid, value: year.year, label: year.year}
+                x.push(y);
+            })
+            setBudgetYearList(x);            
         })
  
     }, [])
@@ -66,7 +81,7 @@ const CourseProfile = (props) => {
             </Row>
             <Row>
                 <Col>
-                    <PortalInputSelect inputTitle="פרויקט" options={project} optionsKey="0" handleSelection={() => emptyFunc()}/>
+                    <PortalInputSelect inputTitle="פרויקט" options={projectList} optionsKey={project} handleSelection={() => emptyFunc()}/>
                 </Col>
             </Row>
             <Row>
@@ -79,7 +94,7 @@ const CourseProfile = (props) => {
                     <PortalInputSelect inputTitle="עיר" options={cityList} optionsKey={city} handleSelection={() => emptyFunc()}/>
                 </Col>
                 <Col>
-                    <PortalInputSelect inputTitle="שנת תקציב" options={budgetYear} optionsKey="0" handleSelection={() => emptyFunc()}/>
+                    <PortalInputSelect inputTitle="שנת תקציב" options={budgetYearList} optionsKey={budgetYear} handleSelection={() => emptyFunc()}/>
                 </Col>
             </Row>
             <Row>
