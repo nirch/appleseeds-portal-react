@@ -3,7 +3,10 @@ import { Container, Row, Col } from 'react-bootstrap'
 import './navbar.css'
 
 const PortalNavbar = (props) => {
-    const { handleLogout } = props;
+    const { handleLogout, handleBack, navbarTitle, navbarArrow } = props;
+    //const navbarTitle = "קורסים"; // props;
+    //const navbarArrow = true; // props;
+
     const [showUsersTypes, setShowUsersTypes] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
 
@@ -12,31 +15,40 @@ const PortalNavbar = (props) => {
     const showHideDivClasses = showUsersTypes ? "showHide showUsersTypes" : "showHide";
     const arrowDivClasses = showUsersTypes ? "iconDown iconUp" : "iconDown";
 
+    const hamburgerView = <div className="menu-icon" onClick={() => { setShowMenu(!showMenu); }} >
+        <div className="hamburger-menu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div></div>;
+
+    const backarrowView = <div className="menu-icon"  onClick={() => { handleBack() }}>
+        <div class="arrow-back" o>
+            <div class="arrow1"></div>
+            <div class="arrow2"></div>
+            <div class="arrow3"></div>
+        </div>
+    </div>;
+
+    const backArrowShow = navbarArrow ? backarrowView : hamburgerView;
 
     return (
         <div className="c-navbar">
+            <div className="menuTitleFlex">
+                <div className="menuTitle">{navbarTitle}</div>
+            </div>
             <div className="menu-icon-wrap">
                 <div>
-                    <div className="menu-icon" onClick={() => { setShowMenu(!showMenu); }} >
-                        <div class="hamburger-menu">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div></div>
+                    {backArrowShow}
+
                     <div className="menu-icon dartIcon" ng-click="backClick()"></div>
                 </div>
-
-
-
-
-
-
 
                 <div className={openMenu}>
                     <div className="sidebar-background" ng-click="closeSidebar()"></div>
                     <div className="sidebar-wrap">
                         <div className="sidebar">
-                            <div class="sidebar-options">
+                            <div className="sidebar-options">
                                 <Container>
                                     <Row>
                                         <div className="sidebar-closebtn">
@@ -56,8 +68,8 @@ const PortalNavbar = (props) => {
                                             <Col xs={9}>
                                                 <div className="name-wrap">
                                                     <span className="user-name">
-                                                        יעל אביבית
-                                            </span>
+                                                        יעל כהן לבקוביץ
+                                                    </span>
                                                 </div>
                                             </Col>
                                         </Row>

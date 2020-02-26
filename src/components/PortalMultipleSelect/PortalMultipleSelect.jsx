@@ -65,7 +65,7 @@ const PortalMultipleSelect = props => {
 
   return (
     <div className="c-select">
-      <div className="label">{label}</div>
+      <div className="c-label">{label}</div>
       <div className="options-container">
         <button
           className="show-select-list-btn"

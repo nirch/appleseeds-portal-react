@@ -4,7 +4,7 @@
 }
 .c-portal-input-select label {
     margin-bottom: 0px;
-    margin-right: 31px;
+    margin-right: 0px;
     display: block;
     font-family: Assistant-SemiBold;
     font-size: 12px;
@@ -14,7 +14,7 @@
     -moz-appearance: none;
     appearance: none;
     border: none;
-    margin-right: 31px;
+    margin-right: 0px;
     font-family: Assistant-light;
     font-size: 12px;
     width: 88%;

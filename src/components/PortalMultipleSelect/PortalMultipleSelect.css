@@ -2,7 +2,7 @@
   margin: 0 31px;
   user-select: none;
 }
-.c-select .label {
+.c-select .c-label {
   font-size: 0.75em;
   font-family: Assistant-SemiBold;
 }
@@ -10,7 +10,6 @@
 .c-select .options-container {
   display: flex;
   align-items: center;
-  /* width: 100%; */
 }
 
 .c-select .option-created {
@@ -85,15 +84,9 @@
 }
 
 .c-select .options-select-container {
-  /* position: relative; */
-  /* width: 100%; */
+  display: flex;
   flex-wrap: wrap;
 }
-/* .c-select .options-created {
-  display: flex;
-  align-items: center;
-  height: 1.8em;
-} */
 
 .c-select .options-select-list {
   display: none;
@@ -126,10 +119,9 @@
 }
 
 .c-select .option-selected-button {
-  display: inline-block;
+  display: flex;
   align-items: center;
-  margin: 0 5px;
-  /* padding: 0 10px 0 0; */
+  margin: 0 5px 5px 5px;
   background-color: hsl(212, 71%, 95%);
   border-radius: 3px;
 }
