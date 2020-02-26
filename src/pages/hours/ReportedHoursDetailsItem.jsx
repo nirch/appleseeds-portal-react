@@ -59,17 +59,17 @@ const ReportedHoursDetailsItem = (props) => {
                 </div>
             </div>
             <div className="content-data">
-                <div >    
+                <div className="content-item" >    
                     <label >פרויקט</label>
-                    <label className="bold">שם פרויקט</label>
+                    <label className="bold">{reportedHoursObject.projectName}</label>
                 </div>
-                <div >    
+                <div className="content-item">    
                     <label>מס/שם קורס</label>
-                    <label className="bold">שם נושא פעילות המלא</label>
+                    <label className="bold">{reportedHoursObject.courseName}</label>
                 </div>
-                <div >    
+                <div className="content-item">    
                     <label>נושא פעילות</label>
-                    <label className="bold">שם הקורס המלא</label>
+                    <label className="bold">{reportedHoursObject.activitySubject}</label>
                 </div>
                 
             </div>

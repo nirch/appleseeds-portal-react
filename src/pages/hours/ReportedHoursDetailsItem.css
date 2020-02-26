@@ -137,6 +137,15 @@
     font-weight: normal;
 }
 
+.c-reported-hours-details-item .content-item
+{
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    padding:15px ;
+
+}
+
 
 
 
