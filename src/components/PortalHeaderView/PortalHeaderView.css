@@ -40,6 +40,8 @@
 }
 .c_portalHeaderView > .changepass >img {
     margin-left: 13px;
+    width:68px;
+    border-radius: 100%;
 
 }
 
