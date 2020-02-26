@@ -6,13 +6,21 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import server from "../../shared/server";
 import ActiveUserContext from "../../shared/activeUserContext";
+import PortalMultipleSelect from "../../components/PortalMultipleSelect/PortalMultipleSelect";
 
 function UserProfile(props) {
     const [profile,setProfile] = useState({});
     const [cities, setCities] = useState([]);
     const [genders, setGenders] = useState([]);
     const [religions, setReligions] = useState([]);
+    const [tagsList, setTagsList] = useState([
+        { value: "1", label: "תגית 1" },
+        { value: "2", label: "תגית 2" },
+        { value: "3", label: "תגית 3" }
+    ]);
 
+    const [tagsSelected, setTagsSelected] = useState([]);
+    const [hideSelectList, setHideSelectList] = useState(true);
     const activeUser = useContext(ActiveUserContext);
     const handleChange = (e) => {
         console.log(e.target);
@@ -90,7 +98,42 @@ function UserProfile(props) {
     if (cities.length < 1 && profile){
         return <Fragment/>
     }
-    debugger
+
+    function displaySelectList(){
+        setHideSelectList(!hideSelectList);
+    };
+    // Callback function that adds a selected option from the tags array
+    // and deletes it from the tags array
+    function addOption(tag) {
+        setTagsSelected(tagsSelected.concat(tag));
+        for (let i = 0; i < tagsList.length; i++) {
+            if (tagsList[i].value === tag.value) {
+                tagsList.splice(i, 1);
+                setTagsList(tagsList);
+                break;
+            }
+        }
+        setHideSelectList(false);
+    };
+    // Callback function that deletes a selected option from the tagsSelected array
+    // and add it back to the tagsList array
+    function deleteOption(index) {
+        const tempOption = tagsSelected[index];
+        const cloneList = [...tagsSelected];
+        cloneList.splice(index, 1);
+        setTagsSelected(cloneList);
+        setTagsList(tagsList.concat(tempOption));
+    };
+    // Callback function that deletes all selected tagsList from the tagsSelected array
+    // and adds them back to the tagsList array
+    function deleteAllOptions(){
+        const cloneList = [...tagsSelected];
+        setTagsSelected([]);
+        setTagsList(tagsList.concat(cloneList));
+        setHideSelectList(true);
+    };
+
+
     const {userid, firstname, lastname, firstnameinarabic, lastnameinarabic,phone,phone2,phone2owner,superstaffname,tznumber,birthday,email,cityid,religionid,genderid,address} = profile;
     return (
         <Container>
@@ -180,14 +223,22 @@ function UserProfile(props) {
             </Row>
             <Row>
                 <Col>
-                    <PortalInput inputTitle={'תעודות'} inputPlaceholder={phone}
-                                 handleChange={() => (e) => handleChange(e)}/>
+                    <PortalMultipleSelect label={'מאשרי שעות נוספים'} displaySelectList={() => console.log()} hideSelectList={()=> console.log('ccccccc')} options={tagsList} selectedOptions={tagsSelected} addOption={(tag) => addOption(tag)} deleteOption={(i) => deleteOption(i)} deleteAllOptions={() => deleteAllOptions()}/>
                 </Col>
             </Row>
             <Row>
                 <Col>
-                    <PortalInput inputTitle={'תעודות בגרות'} inputPlaceholder={phone}
-                                 handleChange={() => (e) => handleChange(e)}/>
+                    <PortalMultipleSelect label={'תעודות'} displaySelectList={() => console.log()} hideSelectList={()=> console.log('ccccccc')} options={tagsList} selectedOptions={tagsSelected} addOption={(tag) => addOption(tag)} deleteOption={(i) => deleteOption(i)} deleteAllOptions={() => deleteAllOptions()}/>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <PortalMultipleSelect label={'תעודות בגרות'} displaySelectList={() => console.log()} hideSelectList={()=> console.log('ccccccc')} options={tagsList} selectedOptions={tagsSelected} addOption={(tag) => addOption(tag)} deleteOption={(i) => deleteOption(i)} deleteAllOptions={() => deleteAllOptions()}/>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <PortalMultipleSelect label={'שםות'} displaySelectList={() => console.log()} hideSelectList={()=> console.log('ccccccc')} options={tagsList} selectedOptions={tagsSelected} addOption={(tag) => addOption(tag)} deleteOption={(i) => deleteOption(i)} deleteAllOptions={() => deleteAllOptions()}/>
                 </Col>
             </Row>
             <Row>
