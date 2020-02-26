@@ -30,9 +30,6 @@ const CourseProfile = (props) => {
 
     const activeUser = useContext(ActiveUserContext);
 
-    function emptyFunc() {
-    }
-
     useEffect(() => {
         // read data from server using courseId and updates all the fields
         server(activeUser, {courseid: courseId}, "GetCourseById").then(res => {
@@ -41,7 +38,7 @@ const CourseProfile = (props) => {
             setarabShortName(res.data.subnameinarabic);
             setProject(res.data.projectid);
             setCity(res.data.cityid);
-            setBudgetYear([{key : "0", value: "כחול", label:"כחול"} , {key: "1", value: "אדום", label:"אדום"}]);
+            setBudgetYear(res.data.yearbudgetid);
             setInstructer(res.data.primaryTeacherName);
         })
         server(activeUser, {}, "GetCities").then(res => {
@@ -55,7 +52,7 @@ const CourseProfile = (props) => {
         server(activeUser, {}, "GetProjects").then(res => {
             let x=[];
             res.data.forEach(project => {
-                const y = {key: project.projectid, value: project.projectname, label: project.projectname}
+                const y = {key: project.projectid, value: project.projectname, label: project.projectname, tags: project.projecttags}
                 x.push(y);
             })
             setProjectList(x);            
@@ -72,6 +69,23 @@ const CourseProfile = (props) => {
 
  
     }, [])
+
+
+    // update tags
+    useEffect(() => {
+        console.log(project);
+        if(projectList && project){
+            setTagsSelected([]);
+            const projectObj = projectList.find(currProject => currProject.key === project);
+            let x=[];
+                projectObj.tags.forEach(tag => {
+                    const y = {value: tag.projecttagid, label: tag.projecttagname}
+                    x.push(y);
+                })
+                setTagsList(x);
+        }
+    }, [project, projectList])
+
     function displaySelectList(){
         setHideSelectList(!hideSelectList);
       };
@@ -135,7 +149,7 @@ const CourseProfile = (props) => {
                     <PortalInputSelect inputTitle="עיר" options={cityList} optionsKey={city} handleSelection={(v) => setCity(v)}/>
                 </Col>
                 <Col>
-                    <PortalInputSelect inputTitle="שנת תקציב" options={budgetYearList} optionsKey={budgetYear} handleSelection={(v) => setBudgetYear(v)}/>
+                    <PortalInputSelect inputTitle="שנת תקציב" options={budgetYearList} optionsKey={budgetYear} handleSelection={(v) => setProject(v)}/>
                 </Col>
             </Row>
             <Row className="profileRow">

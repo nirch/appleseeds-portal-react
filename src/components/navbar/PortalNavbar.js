@@ -1,17 +1,54 @@
-import React, { useState } from 'react';
+import React, { useContext, useState, useEffect } from "react";
 import { Container, Row, Col } from 'react-bootstrap'
 import './navbar.css'
+import ActiveUserContext from "../../shared/activeUserContext";
+import server from "../../shared/server";
+
 
 const PortalNavbar = (props) => {
     const { handleLogout, handleBack, navbarTitle, navbarArrow } = props;
     //const navbarTitle = "קורסים"; // props;
     //const navbarArrow = true; // props;
-
+    const activeUser = useContext(ActiveUserContext);
     const [showUsersTypes, setShowUsersTypes] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
+    const [serverData, setServerData] = useState({});
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const userProfileData = {
+                firstname: "",
+                lastname: "",
+                image: "",
+                email: "",
+                userid: ""
+            };
+            server(activeUser, userProfileData, "GetMyProfile").then(
+                res => {
+                    console.log(res);
+                    setServerData(res.data);
+                    if (res.data.error) {
+                        alert("error recieving courses data");
+                    } else {
+                        // handleLogin(res.data);
+                    }
+                },
+                err => {
+                    console.error(err);
+                }
+            );
+        };
+        if (activeUser) {
+            fetchData();
+        }
+    }, [activeUser]);
 
 
-    const openMenu = showMenu ? "sidebar-open" : "sidebar-close"
+    const userProfileFullName = serverData.firstname + " " + serverData.lastname;
+    const userProfilePic = serverData.image;
+    const userProfilePicLink = "https://pil1.appleseeds.org.il/dcnir/" + userProfilePic;
+
+    const openMenu = showMenu ? "sidebar-open" : "";
     const showHideDivClasses = showUsersTypes ? "showHide showUsersTypes" : "showHide";
     const arrowDivClasses = showUsersTypes ? "iconDown iconUp" : "iconDown";
 
@@ -22,7 +59,7 @@ const PortalNavbar = (props) => {
             <div></div>
         </div></div>;
 
-    const backarrowView = <div className="menu-icon"  onClick={() => { handleBack() }}>
+    const backarrowView = <div className="menu-icon" onClick={() => { handleBack() }}>
         <div class="arrow-back" o>
             <div class="arrow1"></div>
             <div class="arrow2"></div>
@@ -31,6 +68,8 @@ const PortalNavbar = (props) => {
     </div>;
 
     const backArrowShow = navbarArrow ? backarrowView : hamburgerView;
+    const userProfilePicView = userProfilePic ? userProfilePicLink : "images/profile_icon.png";
+    const hrefUsersLink = "#/users/" + serverData.userid;
 
     return (
         <div className="c-navbar">
@@ -41,11 +80,11 @@ const PortalNavbar = (props) => {
                 <div>
                     {backArrowShow}
 
-                    <div className="menu-icon dartIcon" ng-click="backClick()"></div>
+
                 </div>
 
                 <div className={openMenu}>
-                    <div className="sidebar-background" ng-click="closeSidebar()"></div>
+                    <div className="sidebar-background" onClick={() => { setShowMenu(!showMenu); }}></div>
                     <div className="sidebar-wrap">
                         <div className="sidebar">
                             <div className="sidebar-options">
@@ -61,18 +100,20 @@ const PortalNavbar = (props) => {
                                         </div>
                                     </Row>
                                     <div className="sidebar-username">
-                                        <Row className="flexalign">
-                                            <Col className="flex" xs={3}>
-                                                <img alt="" className="profile-image" src="images/profile_icon.png"></img>
-                                            </Col>
-                                            <Col xs={9}>
-                                                <div className="name-wrap">
-                                                    <span className="user-name">
-                                                        יעל כהן לבקוביץ
-                                                    </span>
-                                                </div>
-                                            </Col>
-                                        </Row>
+                                        <a href={hrefUsersLink} onClick={() => { setShowMenu(!showMenu); }}>
+                                            <Row className="flexalign">
+                                                <Col className="flex" xs={3}>
+                                                    <img alt="" className="profile-image" src={userProfilePicView}></img>
+                                                </Col>
+                                                <Col xs={9}>
+                                                    <div className="name-wrap">
+                                                        <span className="user-name">
+                                                            {userProfileFullName}
+                                                        </span>
+                                                    </div>
+                                                </Col>
+                                            </Row>
+                                        </a>
                                     </div>
                                     <div className="divider" />
 
