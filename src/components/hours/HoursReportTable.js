@@ -6,11 +6,15 @@ import HoursReport from './HoursReport';
 const HoursReportTable = (props) => {
     const { reports } = props;
 
+    let noReportsLabel = "";
     let jsxReports=[];
     if(reports!==null && reports!==undefined) {
         reports.forEach(report => {
             jsxReports.push(<HoursReport report={report}/>);
         });
+    }
+    if(jsxReports.length===0) {
+        noReportsLabel = "אין דיווחים"        
     }
 
     return (
@@ -28,6 +32,7 @@ const HoursReportTable = (props) => {
                     {jsxReports}
                 </tbody>
             </table>
+            <div className="c-no-report-msg">{noReportsLabel}</div>
         </div>
     );
 }

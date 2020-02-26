@@ -27,7 +27,7 @@ const PortalInputSelect = props => {
         value={optionsKey}
         onChange={event => {
           // console.log(event.target.value);
-          handleSelection(options.find(option => option.key === event.target.value));
+          handleSelection(options.key);
         }}
       >
         {selectInputOptions}
