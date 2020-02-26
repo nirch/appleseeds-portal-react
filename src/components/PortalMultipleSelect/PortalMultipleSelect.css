@@ -1,8 +1,141 @@
-.bold {
-  font-weight: bold;
-  /* font-size: 1.1em; */
+.c-select {
+  margin: 0 31px;
+  user-select: none;
+}
+.c-select .label {
+  font-size: 0.75em;
+  font-family: Assistant-SemiBold;
 }
 
-.myControl {
-  border-style: none;
+.c-select .options-container {
+  display: flex;
+  align-items: center;
+  /* width: 100%; */
+}
+
+.c-select .option-created {
+  background-color: #e5edfa;
+  height: 2.2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8em;
+  margin-right: 5px;
+  border-radius: 3px;
+}
+
+.c-select .show-select-list-btn {
+  border: none;
+  border-radius: 3px;
+  background-color: white;
+  font-weight: bold;
+  font-size: 1em;
+  margin-left: 5px;
+  padding: 0;
+  width: 10px;
+}
+
+.c-select .show-select-list-btn:hover {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.c-select .option-del-btn {
+  border: none;
+  border-radius: 3px;
+  background-color: hsl(212, 71%, 95%);
+  margin-left: auto;
+  font-weight: bold;
+  color: #15457d;
+  font-size: 0.75em;
+}
+
+.c-select .option-del-btn:hover {
+  background-color: #15457d;
+  color: hsl(212, 71%, 95%);
+}
+
+.c-select .all-options-del-btn {
+  border: none;
+  border-radius: 3px;
+  background-color: white;
+  margin-right: auto;
+  font-weight: bold;
+  color: lightgray;
+  font-size: 1em;
+  padding: 0;
+  width: 10px;
+}
+
+.c-select .all-options-del-btn:hover {
+  color: black;
+  font-size: 1.2em;
+}
+
+.c-select .all-options-del-btn:focus,
+.c-select .show-select-list-btn:focus,
+.c-select .option-del-btn:focus {
+  outline: none;
+}
+
+.c-select .create-option-input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: flex;
+}
+
+.c-select .options-select-container {
+  /* position: relative; */
+  /* width: 100%; */
+  flex-wrap: wrap;
+}
+/* .c-select .options-created {
+  display: flex;
+  align-items: center;
+  height: 1.8em;
+} */
+
+.c-select .options-select-list {
+  display: none;
+  position: absolute;
+  margin-top: 2px;
+  width: calc(100% - 92px);
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  box-shadow: 3px 3px 6px -3px rgba(130, 128, 130, 1);
+  font-size: 0.75em;
+  font-family: Assistant-light;
+  z-index: 999;
+}
+
+.c-select .options-select-list.options-select-list-show {
+  display: block;
+}
+
+.c-select .select-options {
+  background-color: white;
+  top: 0;
+  right: 0;
+  line-height: 2em;
+  padding: 0 0.5em;
+}
+
+.c-select .select-options:hover {
+  background-color: #15457d;
+  color: hsl(212, 71%, 95%);
+}
+
+.c-select .option-selected-button {
+  display: inline-block;
+  align-items: center;
+  margin: 0 5px;
+  /* padding: 0 10px 0 0; */
+  background-color: hsl(212, 71%, 95%);
+  border-radius: 3px;
+}
+
+.c-select .option-selected-button-label {
+  width: 100%;
+  padding: 0 5px;
+  font-size: 0.75em;
 }
