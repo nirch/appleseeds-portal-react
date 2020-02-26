@@ -9,22 +9,25 @@ import { Redirect } from 'react-router-dom'
 import PortalDayMonthPickerComponent from '../../components/PortalDayMonthPickerComponent/PortalDayMonthPickerComponent';
 import { Accordion,Card } from 'react-bootstrap'
 import './hoursApprovePage.css'
+import server from "../../shared/server";
 
 const HoursApprovePage = (props) => {
     const { handleLogout } = props;
     const activeUser = useContext(ActiveUserContext);
     const [currentWorker,setCurrentWorker]=useState(null);
-    const [reports, setReports] = useState([]);
+    const [reports, setReports] = useState([]);   // data of the current selected user
+    const [allWorkers,setAllWorkers]=useState([]);
     const [pages, setPages] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
     const [workersSearchString, setWorkersSearchString] = useState("");
+    const [currentShownDate,setCurrentShownDate]=useState(new Date());
     
     
     const onShowDate=(aDate) => {
-        //setShowDate(aDate);
+        setCurrentShownDate(aDate);
     }
-    
-    
+
+   
     useEffect(() => {     
         if (currentWorker) {
              /// get the reports for this user from db
@@ -35,102 +38,103 @@ const HoursApprovePage = (props) => {
 
     }, [currentWorker])
 
+    useEffect(() => {      
+        // call database to change data
+        const workersArray=[];
+        const fetchData = async () => {
+            console.log(currentShownDate.getMonth(),currentShownDate.getFullYear() );
+            const requestData = {
+                month: currentShownDate.getMonth()+1,
+                year:  currentShownDate.getFullYear()
+            };
+            server(activeUser, requestData, "GetAllReporters").then(
+              res => {
+
+                    let pendingHours=0;
+                    let rejectedHours=0;
+                    let approvedHours=0;
+                    let totalHours=180;
+                    res.data.forEach(item=>
+                    {
+                        if (item.reports.length>0){
+                            pendingHours=100;
+                            rejectedHours=30;
+                            approvedHours=50;
+                            totalHours=180;                         
+                        }
+                        else{
+                            pendingHours=0;
+                            rejectedHours=0;
+                            approvedHours=0;
+                            totalHours=0;
+                        }
+                                           
+                        let obj=
+                        {
+                            id:item.userid,
+                            name: item.firstname+" "+ item.lastname,
+                            status:item.status,
+                            pendingHours: pendingHours,
+                            rejectedHours:rejectedHours,
+                            approvedHours:approvedHours,
+                            totalHours:totalHours,
+                            reports:item.reports
+                        }
+                        workersArray.push(obj);
+                    });
+                    setAllWorkers(workersArray);
+                 if (res.data.error) {
+                    alert("error in GetAllReporters");               
+                } else {
+                  // handleLogin(res.data);
+                }
+              },
+              err => {
+                console.error(err);
+              }
+            );
+          };
+          if (activeUser) {
+            fetchData();
+          }
+
+    }, [currentShownDate])
+
+
 
 
     if (!activeUser) {
         return <Redirect to='/' />
     }
 
-    /*********************************** */
-    // replace this section with db
-    // to be initialized with data from db
-    //worker details
-    const worker1= {
-        id: 101,
-        name:"עובד 1",
-        pendingHours:50,
-        rejectedHours:50,
-        approvedHours:50,
-        totalHours:150,
-    }
-    const worker2= {
-        id: 102,
-        name:"עובד 2",
-        pendingHours:10,
-        rejectedHours:30,
-        approvedHours:130,
-        totalHours:170,
-    }
 
-    const workersArray=[];
-    workersArray.push(worker1);
-    workersArray.push(worker2);
-      // end of replace data
-    /*********************************** */
-   
+    
     const setReportsData=(currentWorker)=>
     {
         let reportedHoursArray=[];
 
-            /*********************************** */
-            // replace this section with db
-            // to be initialized with data from db
-        switch(currentWorker)
-        {
-            case 101:
-                {
-                    const reportedHoursObject1= {
-                        id:1,
-                        status: 1,
-                        date:new Date(),
-                        noOfHours:25,
-                        projectName:"שם הפרויקט הנוכחי",
-                        courseName:"שם קורס נוכחי",
-                        activitySubject: "נושא פעילות"
-                    }
-                    const reportedHoursObject2= {
-                        id:2,
-                        status: 0,
-                        date:new Date(),
-                        noOfHours:10,
-                        projectName:"שם הפרויקט הנוכחי",
-                        courseName:"שם קורס נוכחי",
-                        activitySubject: "נושא פעילות"
-                    }
-                    const reportedHoursObject3= {
-                        id:3,
-                        status: -1,
-                        date:new Date(),
-                        noOfHours:10,
-                        projectName:"שם הפרויקט הנוכחי",
-                        courseName:"שם קורס נוכחי",
-                        activitySubject: "נושא פעילות"
-                    }
-                    reportedHoursArray.push(reportedHoursObject1);
-                    reportedHoursArray.push(reportedHoursObject2);
-                    reportedHoursArray.push(reportedHoursObject3);
-                    break;
-
+        //currentWorker holds the id,
+        // find the worker    
+        
+        let worker=allWorkers.find(element => element.id=== currentWorker);
+        if (worker.reports &&worker.reports.length>0 ) 
+        {  
+            worker.reports.forEach(item=>{
+                const reportedHoursObject= {
+                    id:item.reportid,
+                    status: parseInt(item.approval),
+                    date:item.date,
+                    noOfHours:item.finishhour-item.starthour,
+                    projectName:item.projectid,
+                    courseName:item.courseid,
+                    activitySubject: item.actionid
                 }
-                case 102:
-                {
-                    const reportedHoursObject4= {
-                        id:4,
-                        status: -1,
-                        date:new Date(),
-                        noOfHours:10,
-                        projectName:"שם הפרויקט הנוכחי",
-                        courseName:"שם קורס נוכחי",
-                        activitySubject: "נושא פעילות"
-                    }
-                    reportedHoursArray.push(reportedHoursObject4);
-                    break;
-                }
+                reportedHoursArray.push(reportedHoursObject);
 
-                // end of replace data
-            /*********************************** */
-            
+            })
         }
+
+      
         return reportedHoursArray;
     }
 
@@ -144,7 +148,6 @@ const HoursApprovePage = (props) => {
       };
 
     const handleAccordionClick=(event)=>{
-        console.log(event);
         setCurrentWorker(event) ;  // current worker id is set
       }
   
@@ -156,7 +159,7 @@ const HoursApprovePage = (props) => {
         )
     });
 
-    const accordionItems=workersArray.map(item=>{
+    const accordionItems=allWorkers.map(item=>{
         return (
             <Card>
             <Accordion.Toggle as={Card.Header} eventKey={item.id} onClick={()=>handleAccordionClick(item.id)}>
@@ -176,7 +179,7 @@ const HoursApprovePage = (props) => {
     return (
         <div className="p-hours-approve-page">
             <PortalNavbar  handleLogout={handleLogout}/>
-            <PortalDayMonthPickerComponent className="month-picker" date={new Date('1/1/1960')} onShowDate={onShowDate}></PortalDayMonthPickerComponent>
+            <PortalDayMonthPickerComponent className="month-picker" date={new Date()} onShowDate={onShowDate}></PortalDayMonthPickerComponent>
             <PortalSearchPager  
                 placeholder={"חיפוש עובד"}
                 pages={pages}

@@ -4,45 +4,55 @@ import "./ReportedHoursDetailsItem.css"
 import { Checkbox } from 'react-bootstrap';
 
 const ReportedHoursDetailsItem = (props) => {
-    const [currentDate,setCurrentDate]=useState(new Date())
     const {reportedHoursObject} =  props;
-    
     if (!reportedHoursObject)
     {
         return null;
     }
-    let classType= "pending";
-    if (reportedHoursObject)
+
+  
+
+    const returnClassType= (reportedHoursObject)=>
     {
-        if (reportedHoursObject.status==-1)
+        if(!reportedHoursObject) 
+            return "pending";
+        switch (reportedHoursObject.status)
         {
-            classType="rejected"
-        }            
-        else if (reportedHoursObject.status==1)
-        {
-            classType="approved"
+            case -1:
+                return "rejected";
+                break;
+            case 1:
+                return "approved";
+                break;
+            case 0:
+                return "pending";
+                break;
+
         }
+ 
+  
 
     }
-  
+    let classType= "pending";
+
     return (
         <div className="c-reported-hours-details-item">      
             <div className="radio-action" >
                 <div>
-                    <input type="radio" id={`approved-${reportedHoursObject.id}`} name={`radio-group${reportedHoursObject.id}`}  checked={classType==="approved"}/>
+                    <input type="radio" id={`approved-${reportedHoursObject.id}`} name={`radio-group${reportedHoursObject.id}`}  checked={returnClassType(reportedHoursObject)==="approved"} />
                     <label className="approved" for={`approved-${reportedHoursObject.id}`}>אשר<div className="radio approved"><span></span></div></label>
                 </div>
                 <div>
-                    <input type="radio" id={`pending-${reportedHoursObject.id}`} name={`radio-group${reportedHoursObject.id}`} checked={classType==="pending"}/>
+                    <input type="radio" id={`pending-${reportedHoursObject.id}`} name={`radio-group${reportedHoursObject.id}`} checked={returnClassType(reportedHoursObject)==="pending"} />  
                     <label className="pending" for={`pending-   ${reportedHoursObject.id}`}>ממתין<div className="radio pending"><span></span></div></label>
                 </div>
                 <div >    
-                    <input type="radio" id={`rejected-${reportedHoursObject.id}`} name={`radio-group${reportedHoursObject.id}`} checked={classType==="rejected"}/>
+                    <input type="radio" id={`rejected-${reportedHoursObject.id}`} name={`radio-group${reportedHoursObject.id}`} checked={returnClassType(reportedHoursObject)==="rejected"} />
                     <label className="rejected" for={`rejected-${reportedHoursObject.id}`}>דחה<div className="radio rejected"><span></span></div></label>
                 </div>
                
             </div>
-            <div className={`data ${classType}`}>
+            <div className={`data ${returnClassType(reportedHoursObject)}`}>
             <div className="header-data">
                 <div className="checkbox-div bold" >    
                     <input type="checkbox" id="select" />
