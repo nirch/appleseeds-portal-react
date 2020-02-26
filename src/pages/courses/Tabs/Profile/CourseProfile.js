@@ -65,7 +65,7 @@ const CourseProfile = (props) => {
     }, [])
 
     return (
-        <Container>
+        <Container className="profileContainer">
             <Row className="profileRow">
                 <Col>
                     <PortalInput inputTitle="שם קורס מלא" inputPlaceholder={courseName} inputValue={courseName} handleChange={() => emptyFunc()}/>
