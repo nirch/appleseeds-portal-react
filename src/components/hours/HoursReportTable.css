@@ -20,3 +20,8 @@
     padding-bottom: 5px;
     background-image: linear-gradient(to bottom, rgba(219, 216, 216, 0.973) 2%, white 17%, white 80%);
 }
+
+.c-no-report-msg{
+    text-align: center;
+    margin-top: 50px;
+}
