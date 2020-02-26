@@ -5,6 +5,7 @@ import ActiveUserContext from '../../shared/activeUserContext'
 import { Redirect } from 'react-router-dom'
 import PortalInput from '../../components/PortalInput'
 import PortalTabView from '../../components/PortalTabView/PortalTabView';
+import PortalHeaderView from '../../components/PortalHeaderView/PortalHeaderView';
 
 const UserDetailsPage = (props) => {
     const { handleLogout } = props;
@@ -35,6 +36,7 @@ const UserDetailsPage = (props) => {
             <PortalNavbar handleLogout={handleLogout} />
             {/* <h1>עובדים</h1> */}
             {/* <div>{userid}</div> */}
+            <PortalHeaderView />
             <div>
                 <PortalTabView tabsObj={tabsObj} />
 
