@@ -5,22 +5,27 @@ import ActiveUserContext from '../../shared/activeUserContext'
 
 
 const PortalHeaderView = (props) => {
-
+    const { userId } = props;
+    const [empImg, setemImg] = useState("drawable-mdpi/profile_icon.png");
     const [employeeName, setemployeeName] = useState("שם העובד");
     const [employeeRegD, setemployeeRegD] = useState("");
     const [employeeFamily, setemployeeFamily] = useState("שם משפחה");
     const activeUser = useContext(ActiveUserContext);
-    let myObj = {};
-    server(activeUser, myObj, "GetUserExtendedProfile").then(res => {
+
+    let myObj = { userId: userId };
+    server(activeUser, myObj, "GetUserProfileById").then(res => {
         console.log(res);
         if (res.data.error) {
 
             setemployeeName("שם העובד");
             setemployeeFamily("שם משפחה");
         } else {
-            setemployeeName(res.data.firstname);
-            setemployeeFamily(res.data.lastname);
-            setemployeeRegD(res.data.registerdate)
+            setemployeeName(res.data.profile.firstname);
+            setemployeeFamily(res.data.profile.lastname);
+            setemployeeRegD(res.data.profile.registerdate);
+            if (res.data.profile.image != "") {
+                setemImg("https://pil1.appleseeds.org.il/dcnir/" + res.data.profile.image);
+            }
         }
     });
 
@@ -48,7 +53,7 @@ const PortalHeaderView = (props) => {
                     <input type="checkbox" id="scales" name="scales" />
                     <label for="scales">שינוי סיסמה</label>
                 </div>
-                <img src="drawable-mdpi/profile_icon.png" />
+                <img src={empImg} />
 
             </div>
             <p>נרשם ב : {employeeRegD} </p>
