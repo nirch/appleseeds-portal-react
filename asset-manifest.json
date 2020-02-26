@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/appleseeds-react-portal/static/css/main.cb9229b1.chunk.css",
-    "main.js": "/appleseeds-react-portal/static/js/main.4ffa0225.chunk.js",
-    "main.js.map": "/appleseeds-react-portal/static/js/main.4ffa0225.chunk.js.map",
+    "main.css": "/appleseeds-react-portal/static/css/main.24001910.chunk.css",
+    "main.js": "/appleseeds-react-portal/static/js/main.c4e2168d.chunk.js",
+    "main.js.map": "/appleseeds-react-portal/static/js/main.c4e2168d.chunk.js.map",
     "runtime-main.js": "/appleseeds-react-portal/static/js/runtime-main.351adbda.js",
     "runtime-main.js.map": "/appleseeds-react-portal/static/js/runtime-main.351adbda.js.map",
     "static/css/2.47e06e2e.chunk.css": "/appleseeds-react-portal/static/css/2.47e06e2e.chunk.css",
     "static/js/2.216b1f1b.chunk.js": "/appleseeds-react-portal/static/js/2.216b1f1b.chunk.js",
     "static/js/2.216b1f1b.chunk.js.map": "/appleseeds-react-portal/static/js/2.216b1f1b.chunk.js.map",
     "index.html": "/appleseeds-react-portal/index.html",
-    "precache-manifest.0e3bb80a7529d738908495f053b67fb2.js": "/appleseeds-react-portal/precache-manifest.0e3bb80a7529d738908495f053b67fb2.js",
+    "precache-manifest.e828310934c0c25a1f1efa6e367bd052.js": "/appleseeds-react-portal/precache-manifest.e828310934c0c25a1f1efa6e367bd052.js",
     "service-worker.js": "/appleseeds-react-portal/service-worker.js",
     "static/css/2.47e06e2e.chunk.css.map": "/appleseeds-react-portal/static/css/2.47e06e2e.chunk.css.map",
-    "static/css/main.cb9229b1.chunk.css.map": "/appleseeds-react-portal/static/css/main.cb9229b1.chunk.css.map",
+    "static/css/main.24001910.chunk.css.map": "/appleseeds-react-portal/static/css/main.24001910.chunk.css.map",
     "static/js/2.216b1f1b.chunk.js.LICENSE.txt": "/appleseeds-react-portal/static/js/2.216b1f1b.chunk.js.LICENSE.txt",
     "static/media/index.css": "/appleseeds-react-portal/static/media/Assistant-SemiBold.d6759edb.ttf",
     "static/media/logo.svg": "/appleseeds-react-portal/static/media/logo.25bf045c.svg"
@@ -21,7 +21,7 @@
     "static/js/runtime-main.351adbda.js",
     "static/css/2.47e06e2e.chunk.css",
     "static/js/2.216b1f1b.chunk.js",
-    "static/css/main.cb9229b1.chunk.css",
-    "static/js/main.4ffa0225.chunk.js"
+    "static/css/main.24001910.chunk.css",
+    "static/js/main.c4e2168d.chunk.js"
   ]
 }

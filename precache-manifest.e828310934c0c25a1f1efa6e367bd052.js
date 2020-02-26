@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cdbdbb4a906e40eb869eae1abd814124",
+    "revision": "5bf3e683196453de8a112258dfe1b2f3",
     "url": "/appleseeds-react-portal/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/appleseeds-react-portal/static/css/2.47e06e2e.chunk.css"
   },
   {
-    "revision": "be55cec0d12f487c718e",
-    "url": "/appleseeds-react-portal/static/css/main.cb9229b1.chunk.css"
+    "revision": "9f25bd0121aa9b355218",
+    "url": "/appleseeds-react-portal/static/css/main.24001910.chunk.css"
   },
   {
     "revision": "045383436ad9f47ecafa",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/appleseeds-react-portal/static/js/2.216b1f1b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "be55cec0d12f487c718e",
-    "url": "/appleseeds-react-portal/static/js/main.4ffa0225.chunk.js"
+    "revision": "9f25bd0121aa9b355218",
+    "url": "/appleseeds-react-portal/static/js/main.c4e2168d.chunk.js"
   },
   {
     "revision": "b29203a0dfacf54fd496",
