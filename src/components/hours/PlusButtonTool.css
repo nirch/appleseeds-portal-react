@@ -1,0 +1,14 @@
+.c-plus-button-tool {
+    width: 51px;
+    height: 51px;
+    margin: auto;
+    background: #5d5d5d;
+    border-radius: 50%;
+    display: flex;
+}
+
+.c-plus-button-tool div{
+    font-size: 30px;
+    color: white;
+    margin: auto;
+}
