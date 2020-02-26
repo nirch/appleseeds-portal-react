@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import './users.css'
 import PortalNavbar from '../../components/navbar/PortalNavbar';
 import ActiveUserContext from '../../shared/activeUserContext'
@@ -9,17 +9,21 @@ import PortalInput from '../../components/PortalInput'
 import PortalHeaderView from '../../components/PortalHeaderView/PortalHeaderView';
 
 const UserDetailsPage = (props) => {
-    const { handleLogout } = props;
+    const { navbarTitle, navbarArrow, handleLogout, handleBack } = props;
     const activeUser = useContext(ActiveUserContext);
     const { id } = useParams();
+    const [pageBack, setPageBack] = useState(false);
 
     if (!activeUser) {
         return <Redirect to='/' />
     }
+    if (pageBack) {
+        return <Redirect to='/users' />
+    }
 
     const tabsObj = [{
         header: "פרופיל",
-        view: <UserProfile user={id}/>
+        view: <UserProfile user={id} />
     },
     {
         header: "קורסים",
@@ -36,10 +40,10 @@ const UserDetailsPage = (props) => {
 
     return (
         <div>
-            <PortalNavbar handleLogout={handleLogout} />
+            <PortalNavbar handleLogout={handleLogout} navbarTitle={"עובדים"} navbarArrow={true} handleBack={() => setPageBack(true)} />
             <PortalHeaderView userId={id} />
             <div>
-                <PortalInput inputTitle={'test'} inputValue={'input'} />
+                {/* <PortalInput inputTitle={'test'} inputValue={'input'} /> */}
                 <PortalTabView tabsObj={tabsObj} />
             </div>
         </div>

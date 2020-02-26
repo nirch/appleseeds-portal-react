@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './PortalHeaderView.css'
 import server from '../../shared/server';
 import ActiveUserContext from '../../shared/activeUserContext'
@@ -13,21 +13,24 @@ const PortalHeaderView = (props) => {
     const activeUser = useContext(ActiveUserContext);
 
     let myObj = { userId: userId };
-    server(activeUser, myObj, "GetUserProfileById").then(res => {
-        console.log(res);
-        if (res.data.error) {
 
-            setemployeeName("שם העובד");
-            setemployeeFamily("שם משפחה");
-        } else {
-            setemployeeName(res.data.profile.firstname);
-            setemployeeFamily(res.data.profile.lastname);
-            setemployeeRegD(res.data.profile.registerdate);
-            if (res.data.profile.image != "") {
-                setemImg("https://pil1.appleseeds.org.il/dcnir/" + res.data.profile.image);
+    useEffect(() => {
+        server(activeUser, myObj, "GetUserProfileById").then(res => {
+            console.log(res);
+            if (res.data.error) {
+
+                console.log("error in reading from the server");
+            } else {
+                setemployeeName(res.data.profile.firstname);
+                setemployeeFamily(res.data.profile.lastname);
+                setemployeeRegD(res.data.profile.registerdate);
+                if (res.data.profile.image != "") {
+                    setemImg("https://pil1.appleseeds.org.il/dcnir/" + res.data.profile.image);
+                }
             }
-        }
-    });
+        });
+    }, [userId])
+
 
     return (
         <div className="c_portalHeaderView">
