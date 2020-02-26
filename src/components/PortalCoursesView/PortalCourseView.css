@@ -1,0 +1,9 @@
+ .c_portalCoursesView >.subHeader{
+    margin-right:18px;
+    font-size:10px;
+    color: "#5d5d5d";
+    line-height: 18px;
+    font-family: Assistant-SemiBold;
+    letter-spacing: 0px;
+    margin-bottom: 5px;
+}
