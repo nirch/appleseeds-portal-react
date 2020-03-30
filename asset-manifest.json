@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/appleseeds-react-portal/static/css/main.24001910.chunk.css",
-    "main.js": "/appleseeds-react-portal/static/js/main.c4e2168d.chunk.js",
-    "main.js.map": "/appleseeds-react-portal/static/js/main.c4e2168d.chunk.js.map",
-    "runtime-main.js": "/appleseeds-react-portal/static/js/runtime-main.351adbda.js",
-    "runtime-main.js.map": "/appleseeds-react-portal/static/js/runtime-main.351adbda.js.map",
-    "static/css/2.47e06e2e.chunk.css": "/appleseeds-react-portal/static/css/2.47e06e2e.chunk.css",
-    "static/js/2.216b1f1b.chunk.js": "/appleseeds-react-portal/static/js/2.216b1f1b.chunk.js",
-    "static/js/2.216b1f1b.chunk.js.map": "/appleseeds-react-portal/static/js/2.216b1f1b.chunk.js.map",
-    "index.html": "/appleseeds-react-portal/index.html",
-    "precache-manifest.e828310934c0c25a1f1efa6e367bd052.js": "/appleseeds-react-portal/precache-manifest.e828310934c0c25a1f1efa6e367bd052.js",
-    "service-worker.js": "/appleseeds-react-portal/service-worker.js",
-    "static/css/2.47e06e2e.chunk.css.map": "/appleseeds-react-portal/static/css/2.47e06e2e.chunk.css.map",
-    "static/css/main.24001910.chunk.css.map": "/appleseeds-react-portal/static/css/main.24001910.chunk.css.map",
-    "static/js/2.216b1f1b.chunk.js.LICENSE.txt": "/appleseeds-react-portal/static/js/2.216b1f1b.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/appleseeds-react-portal/static/media/Assistant-SemiBold.d6759edb.ttf",
-    "static/media/logo.svg": "/appleseeds-react-portal/static/media/logo.25bf045c.svg"
+    "main.css": "/appleseeds-portal-react/static/css/main.daba76da.chunk.css",
+    "main.js": "/appleseeds-portal-react/static/js/main.3195d6e3.chunk.js",
+    "main.js.map": "/appleseeds-portal-react/static/js/main.3195d6e3.chunk.js.map",
+    "runtime-main.js": "/appleseeds-portal-react/static/js/runtime-main.b4a9a9a2.js",
+    "runtime-main.js.map": "/appleseeds-portal-react/static/js/runtime-main.b4a9a9a2.js.map",
+    "static/css/2.47e06e2e.chunk.css": "/appleseeds-portal-react/static/css/2.47e06e2e.chunk.css",
+    "static/js/2.4772217d.chunk.js": "/appleseeds-portal-react/static/js/2.4772217d.chunk.js",
+    "static/js/2.4772217d.chunk.js.map": "/appleseeds-portal-react/static/js/2.4772217d.chunk.js.map",
+    "index.html": "/appleseeds-portal-react/index.html",
+    "precache-manifest.bd80f56ce0ac94ab0499b3e2d1e7557b.js": "/appleseeds-portal-react/precache-manifest.bd80f56ce0ac94ab0499b3e2d1e7557b.js",
+    "service-worker.js": "/appleseeds-portal-react/service-worker.js",
+    "static/css/2.47e06e2e.chunk.css.map": "/appleseeds-portal-react/static/css/2.47e06e2e.chunk.css.map",
+    "static/css/main.daba76da.chunk.css.map": "/appleseeds-portal-react/static/css/main.daba76da.chunk.css.map",
+    "static/js/2.4772217d.chunk.js.LICENSE.txt": "/appleseeds-portal-react/static/js/2.4772217d.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/appleseeds-portal-react/static/media/Assistant-SemiBold.d6759edb.ttf",
+    "static/media/logo.svg": "/appleseeds-portal-react/static/media/logo.25bf045c.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.351adbda.js",
+    "static/js/runtime-main.b4a9a9a2.js",
     "static/css/2.47e06e2e.chunk.css",
-    "static/js/2.216b1f1b.chunk.js",
-    "static/css/main.24001910.chunk.css",
-    "static/js/main.c4e2168d.chunk.js"
+    "static/js/2.4772217d.chunk.js",
+    "static/css/main.daba76da.chunk.css",
+    "static/js/main.3195d6e3.chunk.js"
   ]
 }
