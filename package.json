@@ -2,7 +2,7 @@
   "name": "appleseeds-portal-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://nirch.github.io/appleseeds-react-portal",
+  "homepage": "https://nirch.github.io/appleseeds-portal-react",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
