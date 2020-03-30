@@ -27,6 +27,7 @@ const UsersPage = (props) => {
     //fetch data from db
     useEffect(
         () => {
+            setData([]);
             const fetchData = async () => {
                 await server(activeUser, createPayload(), apiName).then(res => {
                     console.log(res);
@@ -40,7 +41,7 @@ const UsersPage = (props) => {
                 });
             };
             fetchData().then(() => console.log('found data')).catch(err => console.log(err));
-        }, [userStatus, pageNum, searchString]);
+        }, [userStatus, pageNum, searchString, apiName]);
 
     if (!activeUser) {
         return <Redirect to='/'/>
@@ -65,33 +66,24 @@ const UsersPage = (props) => {
         return {"search": searchString, "sorting": "userid", "desc": false, "userstatus": userStatus, "page": pageNum};
     };
 
-    // let num = data;
-    // debugger
-    if (!data.users && pageNum >= 0) {
-        //hack -- need to verify implementation
-        return <div></div>
-    }
-
     const clickOnRow = (e) => {
-
-
         props.history.push({
             pathname: `/users/${e.userid}`,
-            state: {userid: e.userid}
+            state: {user: e}
         });
     };
 
 
     return (
-        <div>
+        <div className="p-users">
             <PortalNavbar handleLogout={handleLogout}/>
-            <h1>משתמשים</h1>
             <PortalSearchPager placeholder='חיפוש משתמש' handleSearch={(e) => handleSearch(e)} pages={data.pages}
-                               pageChange={(index) => callPageData(index)} currentPage={pageNum}>search
-                bar</PortalSearchPager>
-            <PortalTable headers={headers} data={data.users} handleClick={(e) => clickOnRow(e)}>blah</PortalTable>
+                               pageChange={(index) => callPageData(index)} currentPage={pageNum}/>
+            <div className="p-users">
+                <PortalTable headers={headers} data={data.users} handleClick={(e) => clickOnRow(e)}/>
+            </div>
             <PortalButtonSet buttons={[{key: 1, label: 'פעילים'}, {key: 0, label: 'לא פעילים'}]}
-                             handleClick={(item) => handleUserType(item)} activeKey={userStatus}>blah</PortalButtonSet>
+                             handleClick={(item) => handleUserType(item)} activeKey={userStatus}/>
         </div>
     );
 };
